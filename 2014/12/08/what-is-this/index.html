@@ -1,0 +1,278 @@
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    
+    <title>What is the meaning of (JavaScript's) this?</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=4800c3a425">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css?v=4800c3a425">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/custom.css?v=4800c3a425">
+
+    
+    <link rel="canonical" href="http://wes.is/2014/12/08/what-is-this/">
+    
+    <meta property="og:site_name" content="Wesley Tate Smith">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="What is the meaning of (JavaScript's) this?">
+    <meta property="og:description" content="Ahh, this. How contextual you are! Whether it is the English language or JavaScript, this can often be easily misconstrued.  Can you tell me what the second this is this sentence is referring to?  Or how about the first?  Assuredly...">
+    <meta property="og:url" content="http://wes.is/2014/12/08/what-is-this/">
+    <meta property="article:published_time" content="2014-12-08T18:36:00.000Z">
+    <meta property="article:modified_time" content="2014-12-29T06:27:45.988Z">
+    <meta property="article:tag" content="javascript">
+    <meta property="article:tag" content="this keyword">
+    <meta property="article:tag" content="call time">
+    <meta property="article:tag" content="new keyword">
+    <meta property="article:tag" content="call and apply">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="What is the meaning of (JavaScript's) this?">
+    <meta name="twitter:description" content="Ahh, this. How contextual you are! Whether it is the English language or JavaScript, this can often be easily misconstrued.  Can you tell me what the second this is this sentence is referring to?  Or how about the first?  Assuredly...">
+    <meta name="twitter:url" content="http://wes.is/2014/12/08/what-is-this/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Wesley Tate Smith",
+    "author": {
+        "@type": "Person",
+        "name": "Wesley Tate Smith",
+        "image": "http://wes.is/content/images/2014/12/AvbldJJ8.jpeg",
+        "url": "http://wes.is/author/wesley",
+        "sameAs": "http://twitter.com/wesleytate"
+    },
+    "headline": "What is the meaning of (JavaScript&#x27;s) this?",
+    "url": "http://wes.is/2014/12/08/what-is-this/",
+    "datePublished": "2014-12-08T18:36:00.000Z",
+    "dateModified": "2014-12-29T06:27:45.988Z",
+    "keywords": "javascript, this keyword, call time, new keyword, call and apply",
+    "description": "Ahh, this. How contextual you are! Whether it is the English language or JavaScript, this can often be easily misconstrued.  Can you tell me what the second this is this sentence is referring to?  Or how about the first?  Assuredly..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Wesley Tate Smith" href="http://wes.is/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59397419-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template tag-javascript tag-this-keyword tag-call-time tag-new-keyword tag-call-and-apply">
+
+    
+    
+
+
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="http://wes.is">Home</a>
+        <a class="subscribe-button icon-feed" href="http://wes.is/rss/">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-javascript tag-this-keyword tag-call-time tag-new-keyword tag-call-and-apply">
+
+        <header class="post-header">
+            <h1 class="post-title">What is the meaning of (JavaScript's) this?</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2014-12-08">08 December 2014</time>  on <a href="../../../../tag/javascript/">javascript</a>, <a href="../../../../tag/this-keyword/">this keyword</a>, <a href="../../../../tag/call-time/">call time</a>, <a href="../../../../tag/new-keyword/">new keyword</a>, <a href="../../../../tag/call-and-apply/">call and apply</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Ahh, <em>this</em>. How contextual you are! Whether it is the English language or JavaScript, <em>this</em> can often be easily misconstrued.  Can you tell me what the second this is this sentence is referring to?  Or how about the first?  Assuredly, we can conclude that the word <em>this</em> in English does not always refer to the same thing.</p>
+
+<p><img src="../../../../content/images/2014/12/whatisthemeaningofthis.png" alt="What is the meaning of this?"></p>
+
+<p>"Great Wes, thanks for the grammar lesson...So how does the <em>this</em> keyword work in JavaScript?"</p>
+
+<p>I'm glad you asked, astute reader! The <em>this</em> keyword in JavaScript is one of the tricky features of the language that people often stumble over, and justifiably so.  There is so much information on <em>this</em> out there on the interwebs to trip up on that it is sometimes hard to know what to believe or how you can be assured that you are covering all your cases. I hope this article will work to assuage all uncertainties and fears surrounding <em>this</em>, and provide a valuable resource for JS developers young and old.</p>
+
+<h2 id="gettingcomfortablewiththis">Getting Comfortable With <em>This</em></h2>
+
+<p>Something we need to remember when referencing the JS keyword <em>this</em> is <em>when</em> it gets bound to something.  The <em>this</em> keyword can only be bound to an object at <strong>CALL TIME</strong>.  With this knowledge, what do you think <em>this</em> is bound to in the case below?</p>
+
+<pre><code class="language-javascript">var func = function(){  
+  console.log(this);
+};
+</code></pre>
+
+<p><br> <br>
+Did you catch yourself?  This was actually a trick question.  <em>This</em> hasn't been bound to anything yet, because the "func" function  was never invoked! In other words, the interpreter would never have even looked inside of the curly braces in func, and the console.log statement would never have been reached. This is a good way to remember that <em>this</em> will only be evaluated at <strong>CALL TIME</strong>.</p>
+
+<p>So now that we know the rules about <em>when</em> we can bind <em>this</em> to something, how do we know <em>what</em> we can bind it to?</p>
+
+<h2 id="lettherebelight">Let There Be Light</h2>
+
+<p>Luckily for us, the JS gods have bestowed us with some simple rules for knowing what <em>this</em> should be bound to at call time.  Try not to deceive yourself over these rules! If you simply follow these five principles, you too will become a master of <em>this</em>.</p>
+
+<h4 id="1globalreference">1) Global Reference</h4>
+
+<pre><code class="language-javascript">console.log(this);  
+</code></pre>
+
+<p>When the keyword <em>this</em> appears in the global context, (and it is not enclosed within a function), the pattern is considered to be a <strong>global reference</strong>. In a global reference <em>this</em> is bound to the global object, which in the browser is <code>window</code>.</p>
+
+<h4 id="2freefunctioninvocation">2) Free Function Invocation</h4>
+
+<pre><code class="language-javascript">var func = function() {  
+  console.log(this);
+};
+func();  
+</code></pre>
+
+<p>In the case where <em>this</em> appears within a function that is not a method on an object and that function is invoked, we call this pattern a <strong>free function invocation</strong>. In this pattern, the <em>this</em> keyword also gets bound to the global object (<code>window</code> in the browser).</p>
+
+<h4 id="3methodinvocation">3) Method Invocation</h4>
+
+<pre><code class="language-javascript">var hello = "I'm a window washing boy!";  
+var boy = {  
+  speak: function(){
+    alert(this.hello);
+  },
+  hello: "I'm a real boy!"
+};
+boy.speak();  
+</code></pre>
+
+<p>This one is beautiful.  If a method is invoked on an object, then any references to <em>this</em> that occur within the execution context of the method are bound to the object to the left of the dot at call time.  This pattern is known as <strong>method invocation</strong>.  In the case above, <em>this</em> would be bound to the boy object, since it is to the left of the dot when speak is invoked.  What will be alerted in the case above?</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/uEB45OAnixU?&amp;showinfo=0&amp;modestbranding=1&amp;hd=1" frameborder="0" allowfullscreen></iframe>
+
+<h4 id="4callorapply">4) Call or Apply</h4>
+
+<pre><code class="language-javascript">var cat = {  
+  talk: function(){
+    alert(this.message);
+  },
+  message: "Meow!"
+};
+var dog = {  
+  message: "Woof!"
+};
+cat.talk();  
+cat.talk.call(dog);  
+</code></pre>
+
+<p>When using the .call or .apply function methods, you are given the power to explicitly state what you want to bind to the keyword <em>this</em>, where the first argument passed into either .call or .apply is the target of what gets bound to <em>this</em> at call time.  In the example above, the <em>this</em> value is bound to the dog object in the call invocation. To learn more about call and apply Function methods and their differences, I recommend heading over to MDN... <br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">Function.prototype.call</a>
+- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">Function.prototype.apply</a></p>
+
+<p><img src="../../../../content/images/2014/12/the_cat_goes_____woof___by_winston452-d58owl2.jpg" alt="Cat Goes Woof"></p>
+
+<h4 id="5thenewkeyword">5) The new keyword</h4>
+
+<pre><code class="language-javascript">var Animal = function(){  
+  console.dir(this);
+  console.log(typeof this);
+  this.isAlive = true;
+};
+var wolf = new Animal();  
+console.log(wolf.isAlive);  
+</code></pre>
+
+<p>When a function is invoked with the <strong>new</strong> keyword in front of it, the JavaScript interpreter assumes you are trying to create a new instance of a class using a constructor function. Therefore, under the hood JS is creating a new object and binding the <em>this</em> keyword to that new object. In the case above, a new object is created and is stored in the wolf variable. </p>
+
+<p>The console.dir statement will give you access to the wolf object, and the console.log statement will print out "object" to the console since <em>this</em> is bound to a new instance of an object. Lastly, console.log(wolf.isAlive) prints out true, solidifying the idea that <em>this</em> is bound to the new object created by the Animal constructor function.</p>
+
+<hr>
+
+<p>And that's it!  It seems preposterous, but understanding these five rules will actually give you all the information you need to be able to make the right conclusions as to what any instance of <em>this</em> may refer to. Good luck and may your understanding of <em>this</em> be ever expanded!</p>
+        </section>
+
+        <footer class="post-footer">
+
+        
+        
+
+            
+            <figure class="author-image">
+                <a class="img" href="../../../../author/wesley/" style="background-image: url(../../../../content/images/2014/12/AvbldJJ8.jpeg)"><span class="hidden">Wesley Tate Smith's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="../../../../author/wesley/">Wesley Tate Smith</a></h4>
+
+                
+                    <p>Programmer, musician, world adventurer, amateur astronomer, and proponent of deep metaphysical discussions.  Currently @Symphony - https://symphony.com</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location">San Francisco</span>
+                    <span class="author-link icon-link"><a href="http://twitter.com/wesleytate">http://twitter.com/wesleytate</a></span>
+                </div>
+            </section>
+
+        
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=What%20is%20the%20meaning%20of%20(JavaScript's)%20this%3F&amp;url=http://wes.is/2014/12/08/what-is-this/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://wes.is/2014/12/08/what-is-this/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://wes.is/2014/12/08/what-is-this/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+	        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wesleysmyth'; // required: replace example with your forum shortname
+    var disqus_identifier = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+         <section class="copyright"><a href="http://wes.is">Wesley Tate Smith</a> © 2018</section>
+         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+
+    
+    <script src="../../../../public/jquery.js?v=4800c3a425"></script>
+
+    
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=4800c3a425"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=4800c3a425"></script>
+    <script type="text/javascript" src="../../../../assets/js/prism.js?v=4800c3a425"></script>
+
+</body>

@@ -1,0 +1,326 @@
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    
+    <title>Speeding up your Command Line Workflow</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=4800c3a425">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css?v=4800c3a425">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/custom.css?v=4800c3a425">
+
+    
+    <link rel="canonical" href="http://wes.is/2015/02/05/speeding-up-your-command-line-workflow/">
+    
+    <meta property="og:site_name" content="Wesley Tate Smith">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Speeding up your Command Line Workflow">
+    <meta property="og:description" content=" A typical day for the modern developer is never the same.  And the speed in which you are able to navigate your computer is absolutely essential for keeping productivity at a maximum. But how do you manage your workflow to...">
+    <meta property="og:url" content="http://wes.is/2015/02/05/speeding-up-your-command-line-workflow/">
+    <meta property="article:published_time" content="2015-02-05T19:53:53.203Z">
+    <meta property="article:modified_time" content="2015-03-18T22:17:18.649Z">
+    <meta property="article:tag" content="terminal">
+    <meta property="article:tag" content="command line">
+    <meta property="article:tag" content="aliases">
+    <meta property="article:tag" content="bash">
+    <meta property="article:tag" content="zsh">
+    <meta property="article:tag" content="keyboard shortcuts">
+    <meta property="article:tag" content="git">
+    <meta property="article:tag" content="workflow">
+    <meta property="article:tag" content="speed">
+    <meta property="article:tag" content="bash profile">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Speeding up your Command Line Workflow">
+    <meta name="twitter:description" content=" A typical day for the modern developer is never the same.  And the speed in which you are able to navigate your computer is absolutely essential for keeping productivity at a maximum. But how do you manage your workflow to...">
+    <meta name="twitter:url" content="http://wes.is/2015/02/05/speeding-up-your-command-line-workflow/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Wesley Tate Smith",
+    "author": {
+        "@type": "Person",
+        "name": "Wesley Tate Smith",
+        "image": "http://wes.is/content/images/2014/12/AvbldJJ8.jpeg",
+        "url": "http://wes.is/author/wesley",
+        "sameAs": "http://twitter.com/wesleytate"
+    },
+    "headline": "Speeding up your Command Line Workflow",
+    "url": "http://wes.is/2015/02/05/speeding-up-your-command-line-workflow/",
+    "datePublished": "2015-02-05T19:53:53.203Z",
+    "dateModified": "2015-03-18T22:17:18.649Z",
+    "keywords": "terminal, command line, aliases, bash, zsh, keyboard shortcuts, git, workflow, speed, bash profile",
+    "description": " A typical day for the modern developer is never the same.  And the speed in which you are able to navigate your computer is absolutely essential for keeping productivity at a maximum. But how do you manage your workflow to..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Wesley Tate Smith" href="http://wes.is/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59397419-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template tag-terminal tag-command-line tag-aliases tag-bash tag-zsh tag-keyboard-shortcuts tag-git tag-workflow tag-speed tag-bash-profile">
+
+    
+    
+
+
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="http://wes.is">Home</a>
+        <a class="subscribe-button icon-feed" href="http://wes.is/rss/">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-terminal tag-command-line tag-aliases tag-bash tag-zsh tag-keyboard-shortcuts tag-git tag-workflow tag-speed tag-bash-profile">
+
+        <header class="post-header">
+            <h1 class="post-title">Speeding up your Command Line Workflow</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-02-05">05 February 2015</time>  on <a href="../../../../tag/terminal/">terminal</a>, <a href="../../../../tag/command-line/">command line</a>, <a href="../../../../tag/aliases/">aliases</a>, <a href="../../../../tag/bash/">bash</a>, <a href="../../../../tag/zsh/">zsh</a>, <a href="../../../../tag/keyboard-shortcuts/">keyboard shortcuts</a>, <a href="../../../../tag/git/">git</a>, <a href="../../../../tag/workflow/">workflow</a>, <a href="../../../../tag/speed/">speed</a>, <a href="../../../../tag/bash-profile/">bash profile</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><img src="../../../../content/images/2015/02/ezgif-com-crop.gif" alt="alt"></p>
+
+<p>A typical day for the modern developer is never the same.  And the speed in which you are able to navigate your computer is absolutely essential for keeping productivity at a maximum. But how do you manage your workflow to ensure that you don't end up spending half your time navigating directories?</p>
+
+<h4 id="usealiases">Use Aliases!</h4>
+
+<p>Aliases are an incredibly effective way of speeding through your daily workflow. And they make you feel like a wizard.  My bash profile is my savior day after day.  But how, you ask, can one get started with setting up aliases, and what is an alias?</p>
+
+<h5 id="analiasisakeyboardshortcutthatallowsyoutousethecommandlinemoreefficiently"><em>"An Alias is a keyboard shortcut that allows you to use the command line more efficiently"</em></h5>
+
+<p><br>  </p>
+
+<h3 id="gettingstarted">Getting Started</h3>
+
+<p>Create your bash profile.  Type <code>nano bash_profile</code> to open the .bash_profile document (or create one if it doesn’t already exist).  Once you have this open copy the following commands at the top. </p>
+
+<pre><code class="language-javascript">alias prof="subl ~/.bash_profile"  
+alias reprof=". ~/.bash_profile"  
+</code></pre>
+
+<p>These will allow you to directly open and edit your bash profile from your terminal in sublime text, assuming you have a "subl" shortcut created.  Feel free to use another shortcut for your favorite text editor. You can type prof in your terminal to open the bash profile document and once saved, typing reprof in your terminal will put those changes into effect. </p>
+
+<h3 id="typesofaliases">Types of Aliases</h3>
+
+<h6 id="navigational">Navigational</h6>
+
+<p>One of the best ways to increase your efficiency of navigating around your computer is to set up some navigational aliases.  This is a list of some typical navigational aliases I use on my personal machine.  </p>
+
+<pre><code class="language-javascript">alias dt="cd ~/Desktop/"  
+alias dw="cd ~/Downloads"  
+alias gh="cd ~/Desktop/Web/Github/"  
+alias hr="cd ~/Desktop/Web/Github/Hack_Reactor/"  
+alias toy="cd ~/Desktop/Web/Github/Hack_Reactor/2014-12-toy-problems"  
+alias self="cd ~/Desktop/Web/Github/Hack_Reactor/self-assessments"  
+alias ex="cd ~/exercism/javascript"  
+alias euler="cd ~/Desktop/Web/Github/euler"  
+</code></pre>
+
+<h6 id="git">Git</h6>
+
+<p>As a software engineer, you will most assuredly be using some sort of version control system.  These are the git aliases that I use to streamline this process dramatically.</p>
+
+<pre><code class="language-javascript">alias ga="git add"  
+alias gs="git status"  
+alias gc="git commit"  
+alias gb="git branch"  
+alias gp="git push"  
+alias gf="git fetch"  
+alias gfu="git fetch upstream"  
+alias gcb="git checkout -b"  
+alias gch="git checkout"  
+alias gchm="git checkout master"  
+alias gpo="git push origin"  
+alias gpom="git push origin master"  
+alias gpum="git pull upstream master"  
+alias gp="git push"  
+alias gpl="git pull"  
+alias gpr="git log --pretty=format:'%Cblue%h%Creset %Cgreen%ad%Creset | %s%C(yellow)%d%Creset [%an]' --graph --date=short --decorate"  
+alias gd="git diff"  
+alias gcl="git clone"  
+alias gm="git merge"  
+alias gr="git reset"  
+alias grb="git rebase"  
+alias grbm="git rebase master"  
+alias grbc="git rebase --continue"  
+alias grv="git remote -v"  
+alias gacm="git add .; git commit -m"  
+alias gundo="git reset HEAD~"  
+</code></pre>
+
+<h6 id="applicationshortcuts">Application Shortcuts</h6>
+
+<p>Here are some basic shortcuts for opening applications. If you want to open file or directory in your browser, your always just a line away. </p>
+
+<p><strong>Chrome</strong>  </p>
+
+<pre><code class="language-javascript">chrome () {  
+  open -a "Google Chrome" "$1"
+}
+</code></pre>
+
+<p><strong>Firefox</strong>  </p>
+
+<pre><code class="language-javascript">ff () {  
+  open -a "Firefox" "$1"
+}
+</code></pre>
+
+<p><strong>Slack</strong>  </p>
+
+<pre><code class="language-javascript">slack () {  
+  open -a "Slack"
+}
+</code></pre>
+
+<p><strong>Skype</strong>  </p>
+
+<pre><code class="language-javascript">skype () {  
+  open -a "Skype"
+}
+</code></pre>
+
+<p><strong>Spotify</strong>  </p>
+
+<pre><code class="language-javascript">spot () {  
+  open -a "Spotify"
+}
+</code></pre>
+
+<h6 id="functionalshortcuts">Functional Shortcuts</h6>
+
+<p>Some quick one liners that make you smile every time.</p>
+
+<p><strong>Create a directory and enter it immediately</strong>  </p>
+
+<pre><code class="language-javascript">mkcd () {  
+  mkdir $1
+  cd $1
+}
+</code></pre>
+
+<p><strong>Clear your terminal</strong>  </p>
+
+<pre><code class="language-javascript">alias cl="clear"  
+</code></pre>
+
+<p><strong>NPM</strong>  </p>
+
+<pre><code class="language-javascript">alias npmi="npm install"  
+alias npmig="npm install -g"  
+</code></pre>
+
+<p><strong>Create a file and open it in Sublime</strong>  </p>
+
+<pre><code class="language-javascript">tosu () {  
+  touch "$1"
+  subl "$1"
+}
+</code></pre>
+
+<p>Aliases are incredibly helpful in developing a terminal workflow that allows you to move through your computer at blazing speeds. Get in touch if you need any help setting up your bash profile or would like any advice with creating your own aliases!</p>
+        </section>
+
+        <footer class="post-footer">
+
+        
+        
+
+            
+            <figure class="author-image">
+                <a class="img" href="../../../../author/wesley/" style="background-image: url(../../../../content/images/2014/12/AvbldJJ8.jpeg)"><span class="hidden">Wesley Tate Smith's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="../../../../author/wesley/">Wesley Tate Smith</a></h4>
+
+                
+                    <p>Programmer, musician, world adventurer, amateur astronomer, and proponent of deep metaphysical discussions.  Currently @Symphony - https://symphony.com</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location">San Francisco</span>
+                    <span class="author-link icon-link"><a href="http://twitter.com/wesleytate">http://twitter.com/wesleytate</a></span>
+                </div>
+            </section>
+
+        
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Speeding%20up%20your%20Command%20Line%20Workflow&amp;url=http://wes.is/2015/02/05/speeding-up-your-command-line-workflow/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://wes.is/2015/02/05/speeding-up-your-command-line-workflow/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://wes.is/2015/02/05/speeding-up-your-command-line-workflow/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+	        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wesleysmyth'; // required: replace example with your forum shortname
+    var disqus_identifier = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+         <section class="copyright"><a href="http://wes.is">Wesley Tate Smith</a> © 2018</section>
+         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+
+    
+    <script src="../../../../public/jquery.js?v=4800c3a425"></script>
+
+    
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=4800c3a425"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=4800c3a425"></script>
+    <script type="text/javascript" src="../../../../assets/js/prism.js?v=4800c3a425"></script>
+
+</body>

@@ -1,0 +1,335 @@
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    
+    <title>Why I prefer the Pseudoclassical pattern for creating classes in JavaScript (and why you should too)...</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=4800c3a425">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css?v=4800c3a425">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/custom.css?v=4800c3a425">
+
+    
+    <link rel="canonical" href="http://wes.is/2014/12/14/why-i-prefer-the-pseudoclassical-pattern-for-creating-classes-in-javascript-and-why-you-should-too/">
+    
+    <meta property="og:site_name" content="Wesley Tate Smith">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Why I prefer the Pseudoclassical pattern for creating classes in JavaScript (and why you should too)...">
+    <meta property="og:description" content="First of all, I should acknowledge that there are programmers out there that insist that JavaScript has no such thing as classes, and in many ways they are justified.  To set this matter aside, I would like to continue the...">
+    <meta property="og:url" content="http://wes.is/2014/12/14/why-i-prefer-the-pseudoclassical-pattern-for-creating-classes-in-javascript-and-why-you-should-too/">
+    <meta property="article:published_time" content="2014-12-14T21:57:00.000Z">
+    <meta property="article:modified_time" content="2014-12-29T07:58:55.241Z">
+    <meta property="article:tag" content="javascript">
+    <meta property="article:tag" content="this keyword">
+    <meta property="article:tag" content="new keyword">
+    <meta property="article:tag" content="classes">
+    <meta property="article:tag" content="instantiation">
+    <meta property="article:tag" content="functional">
+    <meta property="article:tag" content="functional-shared">
+    <meta property="article:tag" content="prototypal">
+    <meta property="article:tag" content="pseudoclassical">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Why I prefer the Pseudoclassical pattern for creating classes in JavaScript (and why you should too)...">
+    <meta name="twitter:description" content="First of all, I should acknowledge that there are programmers out there that insist that JavaScript has no such thing as classes, and in many ways they are justified.  To set this matter aside, I would like to continue the...">
+    <meta name="twitter:url" content="http://wes.is/2014/12/14/why-i-prefer-the-pseudoclassical-pattern-for-creating-classes-in-javascript-and-why-you-should-too/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Wesley Tate Smith",
+    "author": {
+        "@type": "Person",
+        "name": "Wesley Tate Smith",
+        "image": "http://wes.is/content/images/2014/12/AvbldJJ8.jpeg",
+        "url": "http://wes.is/author/wesley",
+        "sameAs": "http://twitter.com/wesleytate"
+    },
+    "headline": "Why I prefer the Pseudoclassical pattern for creating classes in JavaScript (and why you should too)...",
+    "url": "http://wes.is/2014/12/14/why-i-prefer-the-pseudoclassical-pattern-for-creating-classes-in-javascript-and-why-you-should-too/",
+    "datePublished": "2014-12-14T21:57:00.000Z",
+    "dateModified": "2014-12-29T07:58:55.241Z",
+    "keywords": "javascript, this keyword, new keyword, classes, instantiation, functional, functional-shared, prototypal, pseudoclassical",
+    "description": "First of all, I should acknowledge that there are programmers out there that insist that JavaScript has no such thing as classes, and in many ways they are justified.  To set this matter aside, I would like to continue the..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Wesley Tate Smith" href="http://wes.is/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59397419-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template tag-javascript tag-this-keyword tag-new-keyword tag-classes tag-instantiation tag-functional tag-functional-shared tag-prototypal tag-pseudoclassical">
+
+    
+    
+
+
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="http://wes.is">Home</a>
+        <a class="subscribe-button icon-feed" href="http://wes.is/rss/">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-javascript tag-this-keyword tag-new-keyword tag-classes tag-instantiation tag-functional tag-functional-shared tag-prototypal tag-pseudoclassical">
+
+        <header class="post-header">
+            <h1 class="post-title">Why I prefer the Pseudoclassical pattern for creating classes in JavaScript (and why you should too)...</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2014-12-14">14 December 2014</time>  on <a href="../../../../tag/javascript/">javascript</a>, <a href="../../../../tag/this-keyword/">this keyword</a>, <a href="../../../../tag/new-keyword/">new keyword</a>, <a href="../../../../tag/classes/">classes</a>, <a href="../../../../tag/instantiation/">instantiation</a>, <a href="../../../../tag/functional/">functional</a>, <a href="../../../../tag/functional-shared/">functional-shared</a>, <a href="../../../../tag/prototypal/">prototypal</a>, <a href="../../../../tag/pseudoclassical/">pseudoclassical</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>First of all, I should acknowledge that there are programmers out there that insist that JavaScript has no such thing as classes, and in many ways they are justified.  To set this matter aside, I would like to continue the article under the credence that a class may be interpreted as a construct that can produce many similar objects that share the same properties and/or methods.</p>
+
+<p>To give a quick background about this specific discrepancy, this difference between Javascript and other languages is the inheritance pattern associated with the languages.  While other object-oriented languages (e.g. Java or C++) have classical inheritance patterns, JavaScript has a prototypal inheritance pattern.  This means that new instances of a class in Java will look up the class chain, while new instances of a ‘class’ in Javascript will lookup the prototype chain.  The prototype chain is what gives JavaScript its power.  We'll come back to this.</p>
+
+<h2 id="javascriptsdifferentinstantiationpatterns">JavaScript’s Different Instantiation Patterns</h2>
+
+<p>There are a few ways that we can create classes in JS.  However, not all of these patterns use JavaScript’s full potential.  Here I will quickly explain the differences between the four patterns that I am aware of, and why I believe pseudoclassical is the most effective.</p>
+
+<h4 id="1functional">1) Functional</h4>
+
+<pre><code class="language-javascript">var Mammal = function(weight, age) {  
+  var obj = {};
+  obj.hasFur = true;
+  obj.weight = weight;
+  obj.age = age;
+  obj.eat = function(foodWeight) {
+    obj.weight+=foodWeight;
+  };
+  obj.smokes = function() {
+    obj.age++;
+  };
+  return obj;
+};
+</code></pre>
+
+<p>The Functional instantiation pattern contains all of the properties and methods of an object within the constructor function.  This is probably the easiest to understand and therefore gets a lot of credit for being easy to read. Each call to the constructor function will create a new object, properties, and methods for every new instance of a class.  e.g. saying...</p>
+
+<pre><code class="language-javascript">var goat = Mammal(30, 4);  
+</code></pre>
+
+<p>...will set the variable goat equal to an object with a weight of 30 and an age of 4, with a hasFur property and eat and smokes methods.  The goat object does not have a constructor property, so calling goat.constructor would look up the prototype chain and find the constructor value equal to the Object constructor function, since goat is merely referencing a standalone object.  This is a completely legitimate way of creating a new instance of a Mammal, however we are creating duplicate methods each time we need to create a new instance.  In addition, there is some crucial JS power that has yet to be wielded.</p>
+
+<h4 id="2functionalshared">2) Functional-Shared</h4>
+
+<p>The Functional-Shared instantiation pattern takes away burden of writing out all the methods in the constructor function by simply extending the object with another object’s properties. The example below uses the jQuery extend method to add on the methods to the object within the constructor function. <strong>*NB*</strong> extend is not a native JS function!</p>
+
+<pre><code class="language-javascript">var Mammal = function(weight, age) {  
+  var obj = {};
+  obj.hasFur = true;
+  obj.weight = weight;
+  obj.age = age;
+  jQuery.extend(obj, mammalMethods);
+  return obj;
+};
+
+var mammalMethods = {  
+  eat: function(foodWeight) {
+    this.weight+=foodWeight;
+  },
+  smokes: function() {
+    this.age++;
+  }
+};
+</code></pre>
+
+<p>This works as well, though we haven’t really done much differently here other than storing the methods outside of the constructor function.  Next, we’ll see where JavaScript’s strengths really lie.</p>
+
+<h4 id="3prototypal">3) Prototypal</h4>
+
+<p>So far we’ve just been creating a bunch of similar objects that all share the same properties and methods, and in that sense could be considered members of the same class. However, what if you wanted to create subclasses that created objects that inherited all of the properties and methods shared by the parent class?  Shouldn’t all instances of a feline subclass also be able to inherit all of the same properties and methods of all mammals?</p>
+
+<p>In the previous instantiation patterns, all instances of subclasses would need to recreate the properties and methods stored on its’ parent classes in order to inherit these properties.  In other words, we had no way of being able to delegate failed property / method lookups to a parent class.  This is where JavaScript’s prototype chain comes into play.  If a property is not found on an object, the prototype chain is traversed to see whether or not any of the object’s prototypes contain that property.  If the property is found, the result is passed back to the original object and returned as the value of that object’s property. </p>
+
+<p>This is a simplified version of what is actually happening within the prototype chain, which I will expand upon a bit more in detail below. Since we are missing the delegation relationship that prototypal inheritance gives us in both Functional and Functional-shared patterns, we can use  <code>Object.create</code> to build this desired delegation relationship. For example:</p>
+
+<pre><code class="language-javascript">var Mammal = function(weight, age) {  
+  var obj = Object.create(Mammal.prototype);
+  obj.hasFur = true;
+  obj.weight = weight;
+  obj.age = age;
+  return obj;
+};
+
+Mammal.prototype.eat = function(foodWeight) {  
+  this.weight+=foodWeight;
+};
+Mammal.prototype.smokes = function() {  
+  this.age++;
+};
+</code></pre>
+
+<p>In fact, <code>Object.create</code> is the <strong>only</strong> way that you can create a delegation relationship in JavaScript!  In the example above, within the Mammal constructor function we are creating a new object <code>obj</code> and telling it to delegate any failed property lookups on obj to the object stored on the prototype property on the Mammal constructor function (Mammal.prototype), which was created at the time that the Mammal function was declared.</p>
+
+<p>So when a new instance of a Mammal is created, e.g...</p>
+
+<pre><code class="language-javascript">var tiger = Mammal(200, 15);  
+</code></pre>
+
+<p>...JavaScript creates a new object that gets stored in the tiger variable, where the tiger’s __proto__ property directly refers to the object stored at the prototype property of tiger's constructor function.  Therefore, we could say that the following is true:</p>
+
+<pre><code class="language-javascript">&gt;  console.log(tiger.__proto__ === tiger.constructor.prototype);
+&lt;  true  
+</code></pre>
+
+<p>The __proto__ property is what is referenced when looking up the prototype chain.  With this knowledge, would you be able to figure out what is stored on the Mammal constructor function's __proto__ property?</p>
+
+<p>If you screamed out “The Function prototype object!” you would be right.  you.awesomePoints++;  This is because Mammal is a function, and all functions delegate their property lookups to the Function.prototype. </p>
+
+<p>The benefits of Prototypal inheritance are fascinating.  It allows us to easily create classes that inherit from other classes (called subclasses) easily, and it also allows us keep our code <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>.  But just when you thought this was as good as it got, JavaScript made it even simpler to build out "classes". Drumroll please...</p>
+
+<h4 id="4pseudoclassical">4) Pseudoclassical</h4>
+
+<p>The closest JS gets to recreating an actual classical inheritance pattern is the aptly named pseudoclassical pattern.  This basically does the same thing as the prototypal pattern, except we are able to prune our code even further, enhancing clarity and the DRY-ness of our code.</p>
+
+<h5 id="awholenewworld">A Whole ‘new’ World</h5>
+
+<p>In order to alleviate the need to write out Object.create and return that object every time, adding the <em>new</em> keyword before a new instance of a class takes care of this for us.  So writing...</p>
+
+<pre><code class="language-javascript">var bear = new Mammal(400, 26);  
+</code></pre>
+
+<p>…is essentially inserting the following lines into the beginning and end of the Mammal constructor function…</p>
+
+<pre><code class="language-javascript">//var Mammal = function(weight, age) {
+    this = Object.create(Mammal.prototype);
+    // …original function code here...
+    return this;
+//};
+</code></pre>
+
+<p>…so by creating a new instance of a class with the new keyword, we bind that instance to the <em>this</em> keyword.  For more info on <em>this</em>, check out my post on <em>What is the meaning of (JavaScript's) this?</em> <a href="http://wes.is/2014/12/08/what-is-this/">here</a>!</p>
+
+<p>Using the new keyword really frees up our constructor function.  The completely refactored model looks like this...</p>
+
+<pre><code class="language-javascript">var Mammal = function(weight, age) {  
+  this.hasFur = true;
+  this.weight = weight;
+  this.age = age;
+};
+
+Mammal.prototype.eat = function(foodWeight) {  
+  this.weight+=foodWeight;
+};
+Mammal.prototype.smokes = function() {  
+  this.age++;
+};
+</code></pre>
+
+<p>...where each <em>this</em> within the constructor function is a reference to a new instance of the Mammal class created with the new keyword.  Instances of a class in the Pseudoclassical pattern must be created with the new keyword in order to be instantiated correctly.  </p>
+
+<p>Though this arguably has some functionality that is hidden from view, I believe that the Pseudoclassical pattern still remains easy to comprehend and is the clear favorite among the instantiation patterns in JavaScript. </p>
+
+<h6 id="summaryofthebenefitsofthepseudoclassicalinstantiationpattern">Summary of the Benefits of the Pseudoclassical Instantiation Pattern</h6>
+
+<ul>
+<li>The Pseudoclassical pattern stores methods on the prototype object of the constructor function, eliminating the need to recreate methods for each instance of a class (vs. Functional and Functional-Shared).</li>
+<li>The Pseudoclassical pattern eliminates the need to write out Object.create() and return an object to set equal to an instance of a class (vs. Prototypal).</li>
+<li>The Pseudoclassical pattern makes use of the <em>this</em> keyword within the constructor function to keep the constructor function's code DRY and flexible (vs. all other patterns).</li>
+</ul>
+
+<p>Hopefully, this should be enough evidence to persuade you of the benefits of becoming comfortable with using the Pseudoclassical pattern to create classes within JavaScript.  It is also the most commonly used pattern among JS developers,  so it would benefit you to have a good handle on it. Let's get Pseudoclassical!</p>
+        </section>
+
+        <footer class="post-footer">
+
+        
+        
+
+            
+            <figure class="author-image">
+                <a class="img" href="../../../../author/wesley/" style="background-image: url(../../../../content/images/2014/12/AvbldJJ8.jpeg)"><span class="hidden">Wesley Tate Smith's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="../../../../author/wesley/">Wesley Tate Smith</a></h4>
+
+                
+                    <p>Programmer, musician, world adventurer, amateur astronomer, and proponent of deep metaphysical discussions.  Currently @Symphony - https://symphony.com</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location">San Francisco</span>
+                    <span class="author-link icon-link"><a href="http://twitter.com/wesleytate">http://twitter.com/wesleytate</a></span>
+                </div>
+            </section>
+
+        
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Why%20I%20prefer%20the%20Pseudoclassical%20pattern%20for%20creating%20classes%20in%20JavaScript%20(and%20why%20you%20should%20too)...&amp;url=http://wes.is/2014/12/14/why-i-prefer-the-pseudoclassical-pattern-for-creating-classes-in-javascript-and-why-you-should-too/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://wes.is/2014/12/14/why-i-prefer-the-pseudoclassical-pattern-for-creating-classes-in-javascript-and-why-you-should-too/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://wes.is/2014/12/14/why-i-prefer-the-pseudoclassical-pattern-for-creating-classes-in-javascript-and-why-you-should-too/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+	        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wesleysmyth'; // required: replace example with your forum shortname
+    var disqus_identifier = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+         <section class="copyright"><a href="http://wes.is">Wesley Tate Smith</a> © 2018</section>
+         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+
+    
+    <script src="../../../../public/jquery.js?v=4800c3a425"></script>
+
+    
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=4800c3a425"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=4800c3a425"></script>
+    <script type="text/javascript" src="../../../../assets/js/prism.js?v=4800c3a425"></script>
+
+</body>

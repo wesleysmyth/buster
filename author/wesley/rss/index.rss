@@ -1,0 +1,710 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Wesley Tate Smith - Wesley Tate Smith</title><description>A programmer's journey through the stack and back.  </description><link>http://wes.is/</link><generator>Ghost 0.5</generator><lastBuildDate>Fri, 30 Mar 2018 20:44:08 GMT</lastBuildDate><atom:link href="http://wes.is/author/wesley/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Using Nginx as a Reverse Proxy Web Server</title><description>&lt;p&gt;Last week I gave a presentation at Hack Reactor on Nginx and explained the benefits that it can provide over threaded / process based web servers (such as Apache).  Here are the slides from the talk!&lt;/p&gt;
+
+&lt;iframe src="https://docs.google.com/presentation/d/1_5_fcR3pqspV9WuVRzTg4t30bQezTIloSCIp3Xp-EBA/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="width: 100%;"&gt;&lt;/iframe&gt;</description><link>http://wes.is/2015/02/18/using-nginx-as-a-reverse-proxy-web-server/</link><guid isPermaLink="false">ec693afa-f7c5-45eb-be26-f4a5ae6fe4b8</guid><category>hack reactor</category><category>computer science</category><category>nginx</category><category>web</category><category>web servers</category><category>apache</category><category>reverse proxy</category><category>open source</category><dc:creator>Wesley Tate Smith</dc:creator><pubDate>Wed, 18 Feb 2015 22:56:00 GMT</pubDate></item><item><title>Speeding up your Command Line Workflow</title><description>&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/02/ezgif-com-crop.gif" alt="alt"&gt;&lt;/p&gt;
+
+&lt;p&gt;A typical day for the modern developer is never the same.  And the speed in which you are able to navigate your computer is absolutely essential for keeping productivity at a maximum. But how do you manage your workflow to ensure that you don't end up spending half your time navigating directories?&lt;/p&gt;
+
+&lt;h4 id="usealiases"&gt;Use Aliases!&lt;/h4&gt;
+
+&lt;p&gt;Aliases are an incredibly effective way of speeding through your daily workflow. And they make you feel like a wizard.  My bash profile is my savior day after day.  But how, you ask, can one get started with setting up aliases, and what is an alias?&lt;/p&gt;
+
+&lt;h5 id="analiasisakeyboardshortcutthatallowsyoutousethecommandlinemoreefficiently"&gt;&lt;em&gt;"An Alias is a keyboard shortcut that allows you to use the command line more efficiently"&lt;/em&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;br&gt;  &lt;/p&gt;
+
+&lt;h3 id="gettingstarted"&gt;Getting Started&lt;/h3&gt;
+
+&lt;p&gt;Create your bash profile.  Type &lt;code&gt;nano bash_profile&lt;/code&gt; to open the .bash_profile document (or create one if it doesn’t already exist).  Once you have this open copy the following commands at the top. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;alias prof="subl ~/.bash_profile"  
+alias reprof=". ~/.bash_profile"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These will allow you to directly open and edit your bash profile from your terminal in sublime text, assuming you have a "subl" shortcut created.  Feel free to use another shortcut for your favorite text editor. You can type prof in your terminal to open the bash profile document and once saved, typing reprof in your terminal will put those changes into effect. &lt;/p&gt;
+
+&lt;h3 id="typesofaliases"&gt;Types of Aliases&lt;/h3&gt;
+
+&lt;h6 id="navigational"&gt;Navigational&lt;/h6&gt;
+
+&lt;p&gt;One of the best ways to increase your efficiency of navigating around your computer is to set up some navigational aliases.  This is a list of some typical navigational aliases I use on my personal machine.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;alias dt="cd ~/Desktop/"  
+alias dw="cd ~/Downloads"  
+alias gh="cd ~/Desktop/Web/Github/"  
+alias hr="cd ~/Desktop/Web/Github/Hack_Reactor/"  
+alias toy="cd ~/Desktop/Web/Github/Hack_Reactor/2014-12-toy-problems"  
+alias self="cd ~/Desktop/Web/Github/Hack_Reactor/self-assessments"  
+alias ex="cd ~/exercism/javascript"  
+alias euler="cd ~/Desktop/Web/Github/euler"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id="git"&gt;Git&lt;/h6&gt;
+
+&lt;p&gt;As a software engineer, you will most assuredly be using some sort of version control system.  These are the git aliases that I use to streamline this process dramatically.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;alias ga="git add"  
+alias gs="git status"  
+alias gc="git commit"  
+alias gb="git branch"  
+alias gp="git push"  
+alias gf="git fetch"  
+alias gfu="git fetch upstream"  
+alias gcb="git checkout -b"  
+alias gch="git checkout"  
+alias gchm="git checkout master"  
+alias gpo="git push origin"  
+alias gpom="git push origin master"  
+alias gpum="git pull upstream master"  
+alias gp="git push"  
+alias gpl="git pull"  
+alias gpr="git log --pretty=format:'%Cblue%h%Creset %Cgreen%ad%Creset | %s%C(yellow)%d%Creset [%an]' --graph --date=short --decorate"  
+alias gd="git diff"  
+alias gcl="git clone"  
+alias gm="git merge"  
+alias gr="git reset"  
+alias grb="git rebase"  
+alias grbm="git rebase master"  
+alias grbc="git rebase --continue"  
+alias grv="git remote -v"  
+alias gacm="git add .; git commit -m"  
+alias gundo="git reset HEAD~"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id="applicationshortcuts"&gt;Application Shortcuts&lt;/h6&gt;
+
+&lt;p&gt;Here are some basic shortcuts for opening applications. If you want to open file or directory in your browser, your always just a line away. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Chrome&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;chrome () {  
+  open -a "Google Chrome" "$1"
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Firefox&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;ff () {  
+  open -a "Firefox" "$1"
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Slack&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;slack () {  
+  open -a "Slack"
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Skype&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;skype () {  
+  open -a "Skype"
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Spotify&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;spot () {  
+  open -a "Spotify"
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id="functionalshortcuts"&gt;Functional Shortcuts&lt;/h6&gt;
+
+&lt;p&gt;Some quick one liners that make you smile every time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Create a directory and enter it immediately&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;mkcd () {  
+  mkdir $1
+  cd $1
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Clear your terminal&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;alias cl="clear"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;NPM&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;alias npmi="npm install"  
+alias npmig="npm install -g"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Create a file and open it in Sublime&lt;/strong&gt;  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;tosu () {  
+  touch "$1"
+  subl "$1"
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Aliases are incredibly helpful in developing a terminal workflow that allows you to move through your computer at blazing speeds. Get in touch if you need any help setting up your bash profile or would like any advice with creating your own aliases!&lt;/p&gt;</description><link>http://wes.is/2015/02/05/speeding-up-your-command-line-workflow/</link><guid isPermaLink="false">f2783dc7-8971-407c-a453-4292c843d3a2</guid><category>terminal</category><category>command line</category><category>aliases</category><category>bash</category><category>zsh</category><category>keyboard shortcuts</category><category>git</category><category>workflow</category><category>speed</category><category>bash profile</category><dc:creator>Wesley Tate Smith</dc:creator><pubDate>Thu, 05 Feb 2015 19:53:53 GMT</pubDate></item><item><title>How to Use Yeoman to Scaffold Your Next Web App</title><description>&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/yeoman-logo.png" alt="Yeoman"&gt;&lt;/p&gt;
+
+&lt;p&gt;So you've decided to build your next groundbreaking web app, but you don't know where to start.  &lt;/p&gt;
+
+&lt;p&gt;You need to remember to install your client-side dependencies (bower), server side dependencies (npm / node), testing suites, css frameworks / preprocessors, html templating engines, js frameworks, build tools, linters, minification, etc... etc... AND on top of that you need to make sure to construct the application's file structure correctly and ensure that everything is communicating as expected.&lt;/p&gt;
+
+&lt;p&gt;Sounds like hours of unneccessary work / potential productivity time to me...&lt;/p&gt;
+
+&lt;h2 id="yeomantotherescue"&gt;Yeoman to the Rescue!&lt;/h2&gt;
+
+&lt;p&gt;Have you ever had the experience of going to the grocery store only to find out that all of your items on your grocery list are already in your cart and all you need to do is checkout? No? Neither have I.  &lt;/p&gt;
+
+&lt;p&gt;But this is essentially what Yeoman provides for you. A space where you get to choose all the tools you want in your optimal dev environment. All you need to do is select which parts you want in your machine before initializing, and Yeoman builds out the application file structure for you, souped-up and ready to go. Yeoman provides 'generators' which can be called with the 'yo' command to scaffold your app.&lt;/p&gt;
+
+&lt;h4 id="howdoistart"&gt;How do I start?&lt;/h4&gt;
+
+&lt;p&gt;If you don't already have node/npm, you'll need to get those first.  Open up your terminal and type in the following command to check. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;node -v &amp;amp;&amp;amp; npm -v  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don't have node, go check out &lt;a href="http://nodejs.org/"&gt;Node's site&lt;/a&gt; to get up and running. Installing Node will also give you &lt;a href="https://www.npmjs.com/"&gt;npm&lt;/a&gt;.  &lt;/p&gt;
+
+&lt;p&gt;Once you have node / npm, you'll want to globally install some command line tools to get up and running if you don't already have them.  Specifically, you're going to need &lt;strong&gt;Yeoman&lt;/strong&gt;, &lt;strong&gt;Bower&lt;/strong&gt; and either &lt;strong&gt;Grunt&lt;/strong&gt; or &lt;strong&gt;Gulp&lt;/strong&gt; as a build tool.  I recommend installing both and trying either out to see which works for you.  The following command will do this for you. Note that if you are getting errors, you may need to prepend the entire command with "sudo" to allow root access.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;npm install -g yo bower grunt-cli gulp  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You are now ready to rock.&lt;/p&gt;
+
+&lt;h3 id="usinggenerators"&gt;Using Generators&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/kickstarting-nodejs-projects-with-yeoman-5-638.jpg" alt="Generators"&gt;
+Let me preface by saying that there are &lt;a href="http://yeoman.io/generators/"&gt;so many Yeoman generators out there&lt;/a&gt; that you can essentially create any combination of tools that you could ever want.  In the following example I will show you how to set up the structure for an Angular app with jQuery, Bootstrap (with Stylus as the CSS preprocessor), Jade as an HTML templating engine, Jasmine / Mocha for testing, Gulp as the build system, and a few other tools to get you up and running ASAP.  &lt;/p&gt;
+
+&lt;p&gt;First, let's install the Yeoman generator that you'll be using to get you up and running with Angular / Gulp. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;npm install -g generator-gulp-angular  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next create a directory for your project and cd into that directory.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;mkdir myapp &amp;amp;&amp;amp; cd myapp  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Type 'yo'. This will prompt Yeoman to ask you what you want to do.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-28-37-AM-1.png" alt="Gulp Angular Generator"&gt;&lt;/p&gt;
+
+&lt;p&gt;You may have less options (or more) than shown in the picture above.  These are the different Yeoman generators.  For this demo, we are going to select Gulp Angular and my preferred selections will be highlighted in green. Hit enter.&lt;/p&gt;
+
+&lt;p&gt;Next, select which version of Angular you want.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-32-42-AM.png" alt="Angular version"&gt;&lt;/p&gt;
+
+&lt;p&gt;Select your Angular modules.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-33-00-AM.png" alt="Angular Modules"&gt;&lt;/p&gt;
+
+&lt;p&gt;Select the version of jQuery you want for your project.  &lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-33-34-AM.png" alt="jQuery 2.x"&gt;&lt;/p&gt;
+
+&lt;p&gt;Choose a REST resource library. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-36-53-AM.png" alt="ngResource"&gt;&lt;/p&gt;
+
+&lt;p&gt;Choose a router.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-39-04-AM.png" alt="ngRoute"&gt;&lt;/p&gt;
+
+&lt;p&gt;Select your favorite UI framework!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-39-53-AM.png" alt="Bootstrap"&gt;&lt;/p&gt;
+
+&lt;p&gt;Select how you want your UI framework components.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-40-50-AM.png" alt="Angular UI Bootstrap"&gt;&lt;/p&gt;
+
+&lt;p&gt;Choose your preferred CSS preprocessor!  My favorite is Stylus :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-41-52-AM.png" alt="Stylus"&gt;&lt;/p&gt;
+
+&lt;p&gt;Select your JavaScript preprocessor if any (I will opt for JS in it's purest form, though I am a big CoffeeScript fan as well!)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-42-56-AM.png" alt="JavaScript"&gt;&lt;/p&gt;
+
+&lt;p&gt;Pick an html templating engine! I'm hopping on the Jade train.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-44-20-AM.png" alt="Jade"&gt;&lt;/p&gt;
+
+&lt;p&gt;AND YOU'RE GOOD TO GO. Let the Yeoman gods take care of the rest. &lt;br&gt;
+From here, Yeoman will call bower install and npm install to install all of your dependencies and build out your app.  If you encounter any access errors, you may need to npm install your dependencies yourself with "sudo npm install".  &lt;/p&gt;
+
+&lt;p&gt;Now comes the really fun part.  Once your dependencies have finished installing, from the home directory of your app, type the following to fire up gulp and serve your app:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;gulp serve  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your terminal should look something this. On entering the command above, gulp begins to watch all of your files and serves your app up on localhost at port 3000 (or another near if 3000 is taken).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-12-52-32-AM-1.png" alt="Gulp Terminal"&gt;&lt;/p&gt;
+
+&lt;p&gt;You should automatically be directed to your default browser to localhost:port where a dummy front page of your app should be waiting patiently, including links to all of your installed dependencies / tools!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-1-05-41-AM-1.png" alt="myapp"&gt;&lt;/p&gt;
+
+&lt;p&gt;Now head over to your favorite text editor and open up all of your directories' files. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-1-08-08-AM.png" alt="files"&gt;&lt;/p&gt;
+
+&lt;p&gt;Check out that file structure!!!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-1-10-09-AM-1.png" alt="files"&gt;&lt;/p&gt;
+
+&lt;h6 id="gulpftw"&gt;Gulp FTW&lt;/h6&gt;
+
+&lt;p&gt;And since we can just call 'gulp serve' for gulp to watch for changes in our files in real time, we can update our app, save the files, and see the changes rendered in the browser instantly, all without needing to refresh the page.  &lt;/p&gt;
+
+&lt;p&gt;Eg. changing our stylus from this: &lt;br&gt;
+&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-1-19-55-AM.png" alt="Before"&gt;&lt;/p&gt;
+
+&lt;p&gt;...to this...
+&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-1-20-13-AM.png" alt="After"&gt;&lt;/p&gt;
+
+&lt;p&gt;...on file save will instantly render our app without refresh in our browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/Screen-Shot-2015-01-13-at-1-22-23-AM.png" alt="Rendered"&gt;&lt;/p&gt;
+
+&lt;p&gt;Talk about smooth moves. &lt;/p&gt;
+
+&lt;h3 id="youdamanyeoman"&gt;You 'da man, Yeoman&lt;/h3&gt;
+
+&lt;p&gt;If you want to get up and running with projects faster, I highly recommend adding Yeoman into your development workflow.  You'll save time and plenty of headaches, and a build tool like Gulp or Grunt will keep you in the flow when making changes to your dependencies or files.  If you encounter any issues setting up Yeoman feel free to reach out to me below!&lt;/p&gt;</description><link>http://wes.is/2015/01/13/how-to-use-yeoman-to-scaffold-your-next-web-app/</link><guid isPermaLink="false">36c726eb-3808-42cf-9434-c8a6f9ea1904</guid><category>javascript</category><category>npm</category><category>node</category><category>yeoman</category><category>bower</category><category>gulp</category><category>angular</category><category>bootstrap</category><category>stylus</category><category>jade</category><dc:creator>Wesley Tate Smith</dc:creator><pubDate>Tue, 13 Jan 2015 09:49:46 GMT</pubDate></item><item><title>An Ode to JavaScript</title><description>&lt;p&gt;&lt;img src="http://wes.is/content/images/2015/01/rf-freq-radio-wave.png" alt="Music"&gt;
+JavaScript.  You're my favorite type of script.  Without you, I'd feel stripped. You're not Java.  You're Javascript.&lt;/p&gt;
+
+&lt;p&gt;Over the past year or so, JavaScript has become a huge part of my life.  I spent months learning everything I could about the intracacies of the language before applying to Hack Reactor, and now that I'm going through the program I am lucky enough to have the opportunity to work with it every day.&lt;/p&gt;
+
+&lt;p&gt;When you get deep enough into a subject, it gives you the opportunity to connect with people who are equally as captivated by the material as you are. So when I heard Hack Reactor was hosting a talent show, I felt the desire to make that connection.  Not just with Hack Reactor, but with the JavaScript community as a whole. I churned out some lines of pseudo-code-lyrics the night before the show, and with a spark of JavaScript and a dash of comedy bundled up in the form of a song, &lt;em&gt;Ode To JavaScript&lt;/em&gt; was spawned. &lt;/p&gt;
+
+&lt;p&gt;Here is the video of the performance.  Lyrics are below.  Thanks to HR23 cohort-mate &lt;a href="http://prestonparry.com/"&gt;Preston Parry&lt;/a&gt; for filming!&lt;/p&gt;
+
+&lt;iframe width="960" height="720" src="http://www.youtube.com/embed/c70jgZX532o" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;strong&gt;Ode To JavaScript&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;npm install -g song
+
+
+JavaScript  
+Your my favorite type of script  
+Without you I’d feel stripped  
+You’re not Java, you’re JavaScript
+
+Closures…...  
+Just one of the many features of JavaScript that is super useful for a ton of sweet stuff  
+I mean, just think about the fact that we retain access to those outer function’s variables even after the closure returns!  
+var amazing equals function parens open curly brackets newline alert open parens sweet close parens semicolon newline curly brackets semicolon newline amazing parens,  
+…semicolon
+
+Let’s talk about loops!  Let’s talk about loops!  Let’s talk about loops! Let’s talk about loops!  Let’s talk about loops!  Let’s talk about loops!
+
+while (wes.guitar &amp;amp;&amp;amp; audience.isStillInterested) {  
+  wes.play();
+}
+
+But seriously folks, when was the last time you had someone playing you a song that had to do with a programming language?
+
+When Brendan Eich wrote JavaScript in 1995  
+He thought Sun Microsystems had taken him for a ride  
+But little would he know about the languages success  
+That 20 years later we’re still stuck with all this mess
+
+From Data Structures, Algorithms, MVCs and Node  
+There’s plenty Hack Reactor does to teach us how to code  
+But something that our dear instructor Fred just seems to lack  
+I don’t know if you’ve noticed but all of his shirts are black
+
+It’s getting time for seniors to apply to all these jobs  
+There’s Google, Yahoo, San Francisco startups and the mob  
+But don’t forget the lessons that you learned when you were here  
+That toaster lines are sacred and to eat lunch with your peers
+
+Binary Solo* (x2)  
+0 0 0 0 0 0 1  
+0 0 0 0 0 0 1 1  
+0 0 0 0 0 0 1 1 1  
+0 0 0 0 1 1 1 1 
+
+0, 1, 0, 1, 0, 1, 0, 1
+
+(Last chorus x2)
+JavaScript  
+Your my favorite type of script  
+Without you I’d feel stripped  
+You’re not Java, you’re JavaScript
+
+return;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*Binary Solo shamelessly borrowed from Flight of the Conchords&lt;/p&gt;</description><link>http://wes.is/2015/01/07/ode-to-javascript/</link><guid isPermaLink="false">3a44c77e-f828-44ab-91f3-6102be7c8ecd</guid><category>hack reactor</category><category>javascript</category><category>music</category><category>npm</category><category>java</category><category>closures</category><category>loops</category><category>brendan eich</category><category>data structures</category><category>algorithms</category><category>mvcs</category><category>node</category><dc:creator>Wesley Tate Smith</dc:creator><pubDate>Wed, 07 Jan 2015 08:56:19 GMT</pubDate></item><item><title>Why I prefer the Pseudoclassical pattern for creating classes in JavaScript (and why you should too)...</title><description>&lt;p&gt;First of all, I should acknowledge that there are programmers out there that insist that JavaScript has no such thing as classes, and in many ways they are justified.  To set this matter aside, I would like to continue the article under the credence that a class may be interpreted as a construct that can produce many similar objects that share the same properties and/or methods.&lt;/p&gt;
+
+&lt;p&gt;To give a quick background about this specific discrepancy, this difference between Javascript and other languages is the inheritance pattern associated with the languages.  While other object-oriented languages (e.g. Java or C++) have classical inheritance patterns, JavaScript has a prototypal inheritance pattern.  This means that new instances of a class in Java will look up the class chain, while new instances of a ‘class’ in Javascript will lookup the prototype chain.  The prototype chain is what gives JavaScript its power.  We'll come back to this.&lt;/p&gt;
+
+&lt;h2 id="javascriptsdifferentinstantiationpatterns"&gt;JavaScript’s Different Instantiation Patterns&lt;/h2&gt;
+
+&lt;p&gt;There are a few ways that we can create classes in JS.  However, not all of these patterns use JavaScript’s full potential.  Here I will quickly explain the differences between the four patterns that I am aware of, and why I believe pseudoclassical is the most effective.&lt;/p&gt;
+
+&lt;h4 id="1functional"&gt;1) Functional&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var Mammal = function(weight, age) {  
+  var obj = {};
+  obj.hasFur = true;
+  obj.weight = weight;
+  obj.age = age;
+  obj.eat = function(foodWeight) {
+    obj.weight+=foodWeight;
+  };
+  obj.smokes = function() {
+    obj.age++;
+  };
+  return obj;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Functional instantiation pattern contains all of the properties and methods of an object within the constructor function.  This is probably the easiest to understand and therefore gets a lot of credit for being easy to read. Each call to the constructor function will create a new object, properties, and methods for every new instance of a class.  e.g. saying...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var goat = Mammal(30, 4);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;...will set the variable goat equal to an object with a weight of 30 and an age of 4, with a hasFur property and eat and smokes methods.  The goat object does not have a constructor property, so calling goat.constructor would look up the prototype chain and find the constructor value equal to the Object constructor function, since goat is merely referencing a standalone object.  This is a completely legitimate way of creating a new instance of a Mammal, however we are creating duplicate methods each time we need to create a new instance.  In addition, there is some crucial JS power that has yet to be wielded.&lt;/p&gt;
+
+&lt;h4 id="2functionalshared"&gt;2) Functional-Shared&lt;/h4&gt;
+
+&lt;p&gt;The Functional-Shared instantiation pattern takes away burden of writing out all the methods in the constructor function by simply extending the object with another object’s properties. The example below uses the jQuery extend method to add on the methods to the object within the constructor function. &lt;strong&gt;*NB*&lt;/strong&gt; extend is not a native JS function!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var Mammal = function(weight, age) {  
+  var obj = {};
+  obj.hasFur = true;
+  obj.weight = weight;
+  obj.age = age;
+  jQuery.extend(obj, mammalMethods);
+  return obj;
+};
+
+var mammalMethods = {  
+  eat: function(foodWeight) {
+    this.weight+=foodWeight;
+  },
+  smokes: function() {
+    this.age++;
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This works as well, though we haven’t really done much differently here other than storing the methods outside of the constructor function.  Next, we’ll see where JavaScript’s strengths really lie.&lt;/p&gt;
+
+&lt;h4 id="3prototypal"&gt;3) Prototypal&lt;/h4&gt;
+
+&lt;p&gt;So far we’ve just been creating a bunch of similar objects that all share the same properties and methods, and in that sense could be considered members of the same class. However, what if you wanted to create subclasses that created objects that inherited all of the properties and methods shared by the parent class?  Shouldn’t all instances of a feline subclass also be able to inherit all of the same properties and methods of all mammals?&lt;/p&gt;
+
+&lt;p&gt;In the previous instantiation patterns, all instances of subclasses would need to recreate the properties and methods stored on its’ parent classes in order to inherit these properties.  In other words, we had no way of being able to delegate failed property / method lookups to a parent class.  This is where JavaScript’s prototype chain comes into play.  If a property is not found on an object, the prototype chain is traversed to see whether or not any of the object’s prototypes contain that property.  If the property is found, the result is passed back to the original object and returned as the value of that object’s property. &lt;/p&gt;
+
+&lt;p&gt;This is a simplified version of what is actually happening within the prototype chain, which I will expand upon a bit more in detail below. Since we are missing the delegation relationship that prototypal inheritance gives us in both Functional and Functional-shared patterns, we can use  &lt;code&gt;Object.create&lt;/code&gt; to build this desired delegation relationship. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var Mammal = function(weight, age) {  
+  var obj = Object.create(Mammal.prototype);
+  obj.hasFur = true;
+  obj.weight = weight;
+  obj.age = age;
+  return obj;
+};
+
+Mammal.prototype.eat = function(foodWeight) {  
+  this.weight+=foodWeight;
+};
+Mammal.prototype.smokes = function() {  
+  this.age++;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In fact, &lt;code&gt;Object.create&lt;/code&gt; is the &lt;strong&gt;only&lt;/strong&gt; way that you can create a delegation relationship in JavaScript!  In the example above, within the Mammal constructor function we are creating a new object &lt;code&gt;obj&lt;/code&gt; and telling it to delegate any failed property lookups on obj to the object stored on the prototype property on the Mammal constructor function (Mammal.prototype), which was created at the time that the Mammal function was declared.&lt;/p&gt;
+
+&lt;p&gt;So when a new instance of a Mammal is created, e.g...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var tiger = Mammal(200, 15);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;...JavaScript creates a new object that gets stored in the tiger variable, where the tiger’s __proto__ property directly refers to the object stored at the prototype property of tiger's constructor function.  Therefore, we could say that the following is true:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&amp;gt;  console.log(tiger.__proto__ === tiger.constructor.prototype);
+&amp;lt;  true  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The __proto__ property is what is referenced when looking up the prototype chain.  With this knowledge, would you be able to figure out what is stored on the Mammal constructor function's __proto__ property?&lt;/p&gt;
+
+&lt;p&gt;If you screamed out “The Function prototype object!” you would be right.  you.awesomePoints++;  This is because Mammal is a function, and all functions delegate their property lookups to the Function.prototype. &lt;/p&gt;
+
+&lt;p&gt;The benefits of Prototypal inheritance are fascinating.  It allows us to easily create classes that inherit from other classes (called subclasses) easily, and it also allows us keep our code &lt;a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself"&gt;DRY&lt;/a&gt;.  But just when you thought this was as good as it got, JavaScript made it even simpler to build out "classes". Drumroll please...&lt;/p&gt;
+
+&lt;h4 id="4pseudoclassical"&gt;4) Pseudoclassical&lt;/h4&gt;
+
+&lt;p&gt;The closest JS gets to recreating an actual classical inheritance pattern is the aptly named pseudoclassical pattern.  This basically does the same thing as the prototypal pattern, except we are able to prune our code even further, enhancing clarity and the DRY-ness of our code.&lt;/p&gt;
+
+&lt;h5 id="awholenewworld"&gt;A Whole ‘new’ World&lt;/h5&gt;
+
+&lt;p&gt;In order to alleviate the need to write out Object.create and return that object every time, adding the &lt;em&gt;new&lt;/em&gt; keyword before a new instance of a class takes care of this for us.  So writing...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var bear = new Mammal(400, 26);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;…is essentially inserting the following lines into the beginning and end of the Mammal constructor function…&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//var Mammal = function(weight, age) {
+    this = Object.create(Mammal.prototype);
+    // …original function code here...
+    return this;
+//};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;…so by creating a new instance of a class with the new keyword, we bind that instance to the &lt;em&gt;this&lt;/em&gt; keyword.  For more info on &lt;em&gt;this&lt;/em&gt;, check out my post on &lt;em&gt;What is the meaning of (JavaScript's) this?&lt;/em&gt; &lt;a href="http://wes.is/2014/12/08/what-is-this/"&gt;here&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;Using the new keyword really frees up our constructor function.  The completely refactored model looks like this...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var Mammal = function(weight, age) {  
+  this.hasFur = true;
+  this.weight = weight;
+  this.age = age;
+};
+
+Mammal.prototype.eat = function(foodWeight) {  
+  this.weight+=foodWeight;
+};
+Mammal.prototype.smokes = function() {  
+  this.age++;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;...where each &lt;em&gt;this&lt;/em&gt; within the constructor function is a reference to a new instance of the Mammal class created with the new keyword.  Instances of a class in the Pseudoclassical pattern must be created with the new keyword in order to be instantiated correctly.  &lt;/p&gt;
+
+&lt;p&gt;Though this arguably has some functionality that is hidden from view, I believe that the Pseudoclassical pattern still remains easy to comprehend and is the clear favorite among the instantiation patterns in JavaScript. &lt;/p&gt;
+
+&lt;h6 id="summaryofthebenefitsofthepseudoclassicalinstantiationpattern"&gt;Summary of the Benefits of the Pseudoclassical Instantiation Pattern&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The Pseudoclassical pattern stores methods on the prototype object of the constructor function, eliminating the need to recreate methods for each instance of a class (vs. Functional and Functional-Shared).&lt;/li&gt;
+&lt;li&gt;The Pseudoclassical pattern eliminates the need to write out Object.create() and return an object to set equal to an instance of a class (vs. Prototypal).&lt;/li&gt;
+&lt;li&gt;The Pseudoclassical pattern makes use of the &lt;em&gt;this&lt;/em&gt; keyword within the constructor function to keep the constructor function's code DRY and flexible (vs. all other patterns).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hopefully, this should be enough evidence to persuade you of the benefits of becoming comfortable with using the Pseudoclassical pattern to create classes within JavaScript.  It is also the most commonly used pattern among JS developers,  so it would benefit you to have a good handle on it. Let's get Pseudoclassical!&lt;/p&gt;</description><link>http://wes.is/2014/12/14/why-i-prefer-the-pseudoclassical-pattern-for-creating-classes-in-javascript-and-why-you-should-too/</link><guid isPermaLink="false">b6de7a27-46c1-4ad2-9056-9e57ef71d9d2</guid><category>javascript</category><category>this keyword</category><category>new keyword</category><category>classes</category><category>instantiation</category><category>functional</category><category>functional-shared</category><category>prototypal</category><category>pseudoclassical</category><dc:creator>Wesley Tate Smith</dc:creator><pubDate>Sun, 14 Dec 2014 21:57:00 GMT</pubDate></item><item><title>What is the meaning of (JavaScript's) this?</title><description>&lt;p&gt;Ahh, &lt;em&gt;this&lt;/em&gt;. How contextual you are! Whether it is the English language or JavaScript, &lt;em&gt;this&lt;/em&gt; can often be easily misconstrued.  Can you tell me what the second this is this sentence is referring to?  Or how about the first?  Assuredly, we can conclude that the word &lt;em&gt;this&lt;/em&gt; in English does not always refer to the same thing.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/whatisthemeaningofthis.png" alt="What is the meaning of this?"&gt;&lt;/p&gt;
+
+&lt;p&gt;"Great Wes, thanks for the grammar lesson...So how does the &lt;em&gt;this&lt;/em&gt; keyword work in JavaScript?"&lt;/p&gt;
+
+&lt;p&gt;I'm glad you asked, astute reader! The &lt;em&gt;this&lt;/em&gt; keyword in JavaScript is one of the tricky features of the language that people often stumble over, and justifiably so.  There is so much information on &lt;em&gt;this&lt;/em&gt; out there on the interwebs to trip up on that it is sometimes hard to know what to believe or how you can be assured that you are covering all your cases. I hope this article will work to assuage all uncertainties and fears surrounding &lt;em&gt;this&lt;/em&gt;, and provide a valuable resource for JS developers young and old.&lt;/p&gt;
+
+&lt;h2 id="gettingcomfortablewiththis"&gt;Getting Comfortable With &lt;em&gt;This&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;Something we need to remember when referencing the JS keyword &lt;em&gt;this&lt;/em&gt; is &lt;em&gt;when&lt;/em&gt; it gets bound to something.  The &lt;em&gt;this&lt;/em&gt; keyword can only be bound to an object at &lt;strong&gt;CALL TIME&lt;/strong&gt;.  With this knowledge, what do you think &lt;em&gt;this&lt;/em&gt; is bound to in the case below?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var func = function(){  
+  console.log(this);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt; &lt;br&gt;
+Did you catch yourself?  This was actually a trick question.  &lt;em&gt;This&lt;/em&gt; hasn't been bound to anything yet, because the "func" function  was never invoked! In other words, the interpreter would never have even looked inside of the curly braces in func, and the console.log statement would never have been reached. This is a good way to remember that &lt;em&gt;this&lt;/em&gt; will only be evaluated at &lt;strong&gt;CALL TIME&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;So now that we know the rules about &lt;em&gt;when&lt;/em&gt; we can bind &lt;em&gt;this&lt;/em&gt; to something, how do we know &lt;em&gt;what&lt;/em&gt; we can bind it to?&lt;/p&gt;
+
+&lt;h2 id="lettherebelight"&gt;Let There Be Light&lt;/h2&gt;
+
+&lt;p&gt;Luckily for us, the JS gods have bestowed us with some simple rules for knowing what &lt;em&gt;this&lt;/em&gt; should be bound to at call time.  Try not to deceive yourself over these rules! If you simply follow these five principles, you too will become a master of &lt;em&gt;this&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h4 id="1globalreference"&gt;1) Global Reference&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;console.log(this);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When the keyword &lt;em&gt;this&lt;/em&gt; appears in the global context, (and it is not enclosed within a function), the pattern is considered to be a &lt;strong&gt;global reference&lt;/strong&gt;. In a global reference &lt;em&gt;this&lt;/em&gt; is bound to the global object, which in the browser is &lt;code&gt;window&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id="2freefunctioninvocation"&gt;2) Free Function Invocation&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var func = function() {  
+  console.log(this);
+};
+func();  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the case where &lt;em&gt;this&lt;/em&gt; appears within a function that is not a method on an object and that function is invoked, we call this pattern a &lt;strong&gt;free function invocation&lt;/strong&gt;. In this pattern, the &lt;em&gt;this&lt;/em&gt; keyword also gets bound to the global object (&lt;code&gt;window&lt;/code&gt; in the browser).&lt;/p&gt;
+
+&lt;h4 id="3methodinvocation"&gt;3) Method Invocation&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var hello = "I'm a window washing boy!";  
+var boy = {  
+  speak: function(){
+    alert(this.hello);
+  },
+  hello: "I'm a real boy!"
+};
+boy.speak();  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This one is beautiful.  If a method is invoked on an object, then any references to &lt;em&gt;this&lt;/em&gt; that occur within the execution context of the method are bound to the object to the left of the dot at call time.  This pattern is known as &lt;strong&gt;method invocation&lt;/strong&gt;.  In the case above, &lt;em&gt;this&lt;/em&gt; would be bound to the boy object, since it is to the left of the dot when speak is invoked.  What will be alerted in the case above?&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="http://www.youtube.com/embed/uEB45OAnixU?&amp;showinfo=0&amp;modestbranding=1&amp;hd=1" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h4 id="4callorapply"&gt;4) Call or Apply&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var cat = {  
+  talk: function(){
+    alert(this.message);
+  },
+  message: "Meow!"
+};
+var dog = {  
+  message: "Woof!"
+};
+cat.talk();  
+cat.talk.call(dog);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When using the .call or .apply function methods, you are given the power to explicitly state what you want to bind to the keyword &lt;em&gt;this&lt;/em&gt;, where the first argument passed into either .call or .apply is the target of what gets bound to &lt;em&gt;this&lt;/em&gt; at call time.  In the example above, the &lt;em&gt;this&lt;/em&gt; value is bound to the dog object in the call invocation. To learn more about call and apply Function methods and their differences, I recommend heading over to MDN... &lt;br&gt;
+&lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call"&gt;Function.prototype.call&lt;/a&gt;
+- &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"&gt;Function.prototype.apply&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/the_cat_goes&amp;#95;&amp;#95;&amp;#95;&amp;#95;&amp;#95;woof___by_winston452-d58owl2.jpg" alt="Cat Goes Woof"&gt;&lt;/p&gt;
+
+&lt;h4 id="5thenewkeyword"&gt;5) The new keyword&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var Animal = function(){  
+  console.dir(this);
+  console.log(typeof this);
+  this.isAlive = true;
+};
+var wolf = new Animal();  
+console.log(wolf.isAlive);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When a function is invoked with the &lt;strong&gt;new&lt;/strong&gt; keyword in front of it, the JavaScript interpreter assumes you are trying to create a new instance of a class using a constructor function. Therefore, under the hood JS is creating a new object and binding the &lt;em&gt;this&lt;/em&gt; keyword to that new object. In the case above, a new object is created and is stored in the wolf variable. &lt;/p&gt;
+
+&lt;p&gt;The console.dir statement will give you access to the wolf object, and the console.log statement will print out "object" to the console since &lt;em&gt;this&lt;/em&gt; is bound to a new instance of an object. Lastly, console.log(wolf.isAlive) prints out true, solidifying the idea that &lt;em&gt;this&lt;/em&gt; is bound to the new object created by the Animal constructor function.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;And that's it!  It seems preposterous, but understanding these five rules will actually give you all the information you need to be able to make the right conclusions as to what any instance of &lt;em&gt;this&lt;/em&gt; may refer to. Good luck and may your understanding of &lt;em&gt;this&lt;/em&gt; be ever expanded!&lt;/p&gt;</description><link>http://wes.is/2014/12/08/what-is-this/</link><guid isPermaLink="false">81908c4d-94df-4e03-a973-fcefdb315db8</guid><category>javascript</category><category>this keyword</category><category>call time</category><category>new keyword</category><category>call and apply</category><dc:creator>Wesley Tate Smith</dc:creator><pubDate>Mon, 08 Dec 2014 18:36:00 GMT</pubDate></item><item><title>The Journey Begins</title><description>&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/The-Hobbit-hobbiton.jpg" alt="The Journey"&gt;&lt;/p&gt;
+
+&lt;p&gt;There comes a time in every developer's life when the realization that they can no longer put off taking their skills to the next level sinks in.  For some, it comes at the very beginning of their journey into code, and for others it may come many years down the line.  &lt;/p&gt;
+
+&lt;p&gt;For me, that day occurred earlier this year in March while sitting at a coffee shop in Brooklyn perusing over emails on a bright, cold, snowy morning.&lt;/p&gt;
+
+&lt;p&gt;I had opened up an email from &lt;a href="http://javascriptweekly.com/"&gt;JavaScript Weekly&lt;/a&gt;, one of my favorite JS resources for keeping up to date about the interwebs, and found a tiny link at the bottom advertising a coding school that focused on JavaScript in San Francisco...That was the instant I knew I had found my path.&lt;/p&gt;
+
+&lt;p&gt;After many months of studying and a thorough application process, I found out that I was accepted, and I began to put all of my energy into preparing for day one.  That day is finally here.&lt;/p&gt;
+
+&lt;h1 style="text-align: center;"&gt;Welcome to Hack Reactor&lt;/h1&gt;  
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/logo-1.png" alt="alt"&gt;&lt;/p&gt;
+
+&lt;p&gt;This has been a milestone that I have been looking forward to since hearing about the program way back in March, and I am beyond ecstatic to begin.  &lt;a href="http://hackreactor.com/"&gt;Hack Reactor&lt;/a&gt; is a coding bootcamp that primarily focuses on all things JavaScript, and educating all those who dare to go through the grueling 12+ hour days, 6 days a week, for 13 weeks.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/download.png" alt="Week-to-week"&gt;&lt;/p&gt;
+
+&lt;p&gt;There are students that come from all sorts of backgrounds and levels of programming experience, (though you do need to have a decent handle on JS to apply), but it seems that Hack Reactor does a great job of finding people that are eager to learn and willing to go the distance to do so.  I’m hoping my previous development experience on the front end building websites will help as we get into building out our applications, and I really am looking forward to getting a better handle on a lot of backend tools / databases as well.  My personal goal is to feel comfortable wherever I find myself within the stack, so this is a task that I look to develop while studying at HR.&lt;/p&gt;
+
+&lt;h3 id="blindedbycomputerscience"&gt;Blinded by (Computer) Science&lt;/h3&gt;
+
+&lt;p&gt;We start off the week with a dive into the heart of computer science, including recursion, data structures, Big O notation (time complexity and space complexity of algorithms), data modeling and classes, inheritance patterns, and a scoped quest into the intricacies and details of JavaScript.  The goal: to acquire meaning, intention, and drive to become wizards of the language, the full stack, and everything in between.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/one-does-not-simply-write-an-algorithm.jpg" alt="One does not simply write an algorithm"&gt;&lt;/p&gt;
+
+&lt;p&gt;No longer will '&lt;a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/"&gt;this&lt;/a&gt;' be just another misconstrued four letter word… Long gone are the days of pouring over the console distraught over the fact that none of the following statements are true...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&amp;gt; 0.1 + 0.2 === 0.3
+&amp;lt; false
+
+&amp;gt; NaN === NaN
+&amp;lt; false
+
+&amp;gt; isNaN(null)
+&amp;lt; false  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;…and while many of these intricacies of JavaScript continue to mystify the natural minds of many a web developer, I will be doing everything I can to get one step closer to understanding what is the truth and what gets lost in interpretation.  In order for me to truly succeed, I will need to not only understand all the right ways to accomplish something, but all the wrong ways as well.  This for me is one of the most rewarding parts of the learning process.&lt;/p&gt;
+
+&lt;h3 id="thepathahead"&gt;The Path Ahead&lt;/h3&gt;
+
+&lt;p&gt;I look forward to the challenges that lie ahead at Hack Reactor, and I can’t wait to meet the rest of my classmates and delve into this learning experience with everything I’ve got.  I hope to be able to come out on the other end with a knowledge of the full stack, a great network of friends, and the ability to continue to learn well beyond this program is over.  I’ll continue to post with my thoughts, experiences, and discoveries along the way, and perhaps you’ll be able to get something from my experiences as well.  Let the hacking begin!&lt;/p&gt;</description><link>http://wes.is/2014/12/02/the-journey-begins/</link><guid isPermaLink="false">9ea4bc7c-b29f-451f-a1b8-c99c2a5e3c8f</guid><category>hack reactor</category><category>javascript</category><category>computer science</category><dc:creator>Wesley Tate Smith</dc:creator><pubDate>Wed, 03 Dec 2014 02:13:00 GMT</pubDate></item><item><title>Techweek NY 2014 Recap</title><description>&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/techweek_logo_800px.png" alt="Techweek"&gt;&lt;/p&gt;
+
+&lt;p&gt;Earlier this month, I was lucky enough to attend &lt;strong&gt;Techweek&lt;/strong&gt;, the self proclaimed #1 technology conference and festival in the Unites States. While I can't speak to the accuracy of this declaration, I did have a great time at the conference for the two days that I attended, and I met a lot of fascinating people and discovered some mind expanding / bleeding-edge technologies and innovative companies along the way.  I also met one of my future Hack Reactor classmates for the first time here, and I'm really looking forward to spending the winter coding away in San Francisco with him and the rest of our cohort in HR23.&lt;/p&gt;
+
+&lt;p&gt;Techweek is still a fairly new and perhaps lesser known tech conference / festival compared to &lt;a href="http://sxsw.com/"&gt;SXSW&lt;/a&gt; Interactive (1994) and the arguably more familiar  &lt;a href="http://techcrunch.com/event-type/disrupt/"&gt;Techcrunch Disrupt&lt;/a&gt;, which has been around for just as long (since 2011).  Yet the Techweek conference is currently being held in five different cities (NYC, LA, Chicago, Detroit, Miami), while the SXSW Interactive (Austin) and TC Disrupt (SF, NYC, and this year London) can only claim one and &lt;em&gt;sometimes&lt;/em&gt; three respectively.  Additionally, after I met and spoke with Techweek's Chief Strategy Officer at the conference, it sounds like they have plans to continue their expansion into other cities and markets, which could set them apart from the existing tech conferences and potentially be a great platform for more local startup businesses and technologies.  After all, Techweek's mission is to "showcase, celebrate, and enable emerging innovation ecosystems"...&lt;/p&gt;
+
+&lt;p&gt;Once I arrived at the Techweek NY conference for Day 1, I knew I was in for a different conference experience.  As opposed to other conferences I have attended in the past that take place in large, mostly sterile environments, Techweek was set in a trendy underground loft space in Soho.  I believe that this speaks to the mindset of the festival and the tech industry in general; cutting-edge, innovative, trendy...&lt;/p&gt;
+
+&lt;p&gt;After picking up my badge I made my way to the expo floor.  It was riddled with startups, tech-centric companies, and a few larger companies that felt a bit out of place (American Airlines had a booth to showcase their larger seats in business class and nothing else), but overall the people that I met and the innovative platforms and technologies were astounding.  Here are some of my picks for companies that stood out as innovators in their fields.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://rescuedideas.com/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Rescued Ideas (Basslet)&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+The Basslet was perhaps my favorite part of the whole conference.  It's a wearable bracelet that thumps to the rhythms of the bass for whatever song you are listening to, which gives you the feeling like you are experiencing the music in a live setting.  It makes listening to music more fun, personal, and portable.  Can't wait to see this product hit the market (and likely be snapped up by Apple)...&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://erghis.com/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Erghis&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+Erghis is a Swedish company at the forefront of gesture-controlled-touchless-interaction technology (that was a mouthful).  However, in contrast to my description, Erghis is actually making using devices and workflows more intuitive and simple by using in-air hand gestures to type, command, and control computers and devices.  I think there is great future in touchless technology, so I am looking forward to seeing what arenas Erghis and this technology can take part of in the future, and if it is as intuitive and easy to use as they claim it to be.  Watch the video on their &lt;a href="http://erghis.com/"&gt;homepage&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.hackerrank.com/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Hackerrank&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+Hackerrank's definition of a "hacker" is:&lt;/p&gt;
+
+&lt;p&gt;&lt;code style="font-size: 15px;"&gt;"someone who can make a computer do what he wants — whether the computer wants to or not."&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I look forward to the day when I can consider myself hacker material. Hackerrank is out to allow people to make that dream a reality for many people. Hackerrank is a platform built for coders by coders.  The site allows programmers of any skill level to practice their abilities and compete with other coders on programming challenges to move up the site's rankings.  Also, the site hosts competitions sponsored by companies, where the winner(s) of the competition can interview with the company directly for a job. &lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.sailo.co/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Sailo&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+Peer-to-peer boat sharing network.  Like Airbnb / Relay Rides but for your boat.  Based in the Northeast U.S. but expanding to Miami and perhaps the West coast soon. Bon Voyage.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://admitted.ly/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Admitted.ly&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+Addmittedly is a platform for U.S. high school students to determine which colleges are a good fit for them based on their personality.  This is done through a quick online questionnaire which evaluates the student's psychology and preferences.  It is already being used by over 100,000 students in the U.S. and is making the application process for undergraduate students easier and more manageable.  Also, great domain name...&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://easypairings.com/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Easy Pairings&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+Restaurants can sign up with Easy Pairings to have candidates for staff positions hand selected by Easy Pairings staff and interview dates/times automatically scheduled.  Potential service employees can sign up on the site with their skills / experience as well.  Makes both finding a job and hiring a smoother process in the food industry.  Yum...&lt;/p&gt;
+
+&lt;p&gt;I was also really impressed by the quality of the New York based startups, many of which dealt with real estate, transportation, or convenience / efficiency solutions.  Here were some of the standouts IMHO:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.padspin.com/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Padspin&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+Padspin was the most impressive real estate startup I met.  The company is based in NYC, where finding the right apartment to rent can conceivably be the most daunting task a New Yorker faces.  Padspin makes the process a lot smoother (and more affordable) for renters, tenants leaving their apartments, and landlords alike.  When a tenant is moving out of an apartment, they post their place on Padspin, and if they link up with someone to rent their place, the renter pays a relatively small fee (around 10% of the monthly rent) compared to what a broker would usually charge for finding a place, which can be anywhere from one month's rent to 15-20% of the annual rent for the apt!  In all, this service streamlines the rental process in NY drastically, and it seems they have a great team of developers and managers behind the company as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.thecleancube.com/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Clean Cube&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+Clean Cube's aim is to make the lifestyle of the urban dweller more convenient and efficient.  By installing "cubes" in residential buildings (and soon to be commercial spaces) throughout your city, you can rent a cube (like a locker) and order services where all of the pickup and drop-off is handled through the physical cube.  This includes everything from package delivery, laundry, dry cleaning, grocery delivery, goodwill donations, and storage, which the clean cube team handles ENTIRELY through their sleek web interface or mobile app.  Their operations seem fairly smooth as of now, though I would be interested to see how they scale. Still, I believe this model is definitely the future for many young / busy folk in bigger cities...&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.ridewithvia.com/" style="text-decoration: none;color: black"&gt;&lt;h5 style="margin-bottom: -10px;"&gt;Via&lt;/h5&gt;&lt;/a&gt; &lt;br&gt;
+Similar to Uber or Lyft, Via is a car service app that allows you to order a car from your phone and be taken to your destination.  The difference here however, is Via is a rideshare app; meaning that you can share the ride with others who are traveling along your route to make the ride more affordable and efficient (+1 for carpooling!).  While I can imagine a lot of potential issues with this system, I really like the concept and hope they continue to grow.  Unfortunately the app requires a large user base, so they are currently only operating in NYC in Manhattan between 32nd street and 102nd street on the east side, though they did say they have plans to expand when more people start using the app.  The upsides of this system?  It costs just $5 per ride wherever you are going, and it is promoting more economical travel solutions.  And hey, you might just meet some interesting people along the way.  The sharing economy is taking over.&lt;/p&gt;
+
+&lt;h4&gt;Wearable Tech Talk&lt;/h4&gt;  
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/copy.jpeg" alt="tech panel"&gt;&lt;/p&gt;
+
+&lt;p&gt;Throughout the day, speakers throughout the tech industry converged on any of the three stages Techweek had set up.  One of my personal favorite discussions was on wearable technology.  One panelist sported a pair of Google glasses, another was a fashion / technology entrepreneur, a marketing guru who conveyed his opinions on the latest trends in the technology industry, and lastly a CEO of a wearable tech device that many professional athletes use in their daily training regimen.  Topics included a discussion of the balance between functional and fashionable technology (the new Apple iWatch, Google Glass, high-tech fabrics) and how wearable technology will be able to enter our daily lives and not become a nuisance but a more useful and integrated part of our lives.&lt;/p&gt;
+
+&lt;h4&gt;Tell Me a Story&lt;/h4&gt;  
+
+&lt;p&gt;One of my other favorite discussions was on how businesses can grow through their ability to tell a story.  For example, companies like Red Bull and Tom's Shoes don't just sell energy drinks or shoes alongside traditional advertising.  They spend a lot more money on building experiences and building their story which people can affiliate with and understand.  This led to a discussion on how software companies can create a similar experience by opening up their software's capabilities through allowing external users to have access to more features within the software's API.  This practice is essential for innovation, as the more people who have access to the functionality of an application, the more creation can come from it.  It allows other companies to tell their own story by using pre-existing features on another company's software.  This collaborative effort and open-source / sharing is what makes the world of technology move forward at the exponential pace that it does.  &lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://wes.is/content/images/2014/12/2014-10-02-18-22-51-copy.jpg" alt="CTO panel"&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, was a panel of CTO's, who gave advice from how to launch your products to what it means to create a company culture and hold true your company's values.  Here were some of my main takeaways:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;You don't necessarily need to build all aspects of a software product before testing it on one realm.  Eg. you don't need to build an iPhone app, iPad app, and website for a product before determining whether or not it can succeed in one of these spaces. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Company culture is not just about providing a ping-pong table in your office space and a bunch of free yoga classes to your employees.  It's everything else.  It's the way the people at the company think and are encouraged to think and act.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The biggest issues within companies can often be a lack of people communicating to one another, whether it is between teams, departments, or the people who you work with on a daily basis. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fire fast.  If people are not a good fit, it is often better for both parties to let them go and move on.  This allows your business to make it a critical point to replace them quickly, and to find someone who is a better fit for the position or within the company.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The last talk I caught was on using social media as a tool for growing your enterprise.  This was informative as it was interesting, as many innovative or premature social networks can often prove to be great boons to a company's success.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Again, storytelling is the future of brand success. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;There is no need to post only content that directly relates to the topic which your company is involved in.  Just engage people.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Think about posting information that not necessarily relates to the business but would appeal to your followers in general.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;As a startup, you can only launch once.  Make sure you do it right and are ready across all media channels, platforms, etc...&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you have an idea for a company:&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Do it now.&lt;/li&gt;
+&lt;li&gt;Go big.&lt;/li&gt;
+&lt;li&gt;Customers first.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After the two days at Techweek, I left sufficiently inspired. I was grateful to have met so many innovators in the tech world and to have had an insight into the future of the tech scene. It has influenced me to build products of my own and to given me an understanding of how I will fit into the tech world as a developer.  I'm really hoping to display something I have worked on in an environment like this someday. Let the building begin. &lt;/p&gt;</description><link>http://wes.is/2014/10/11/techweek-ny-2014-overview/</link><guid isPermaLink="false">da76f424-36e5-4389-9101-2fa5b6dd0b60</guid><category>techweek</category><category>conferences</category><category>startups</category><category>new technology</category><dc:creator>Wesley Tate Smith</dc:creator><pubDate>Sat, 11 Oct 2014 16:04:00 GMT</pubDate></item></channel></rss>

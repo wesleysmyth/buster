@@ -1,0 +1,319 @@
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    
+    <title>How to Use Yeoman to Scaffold Your Next Web App</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=4800c3a425">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css?v=4800c3a425">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/custom.css?v=4800c3a425">
+
+    
+    <link rel="canonical" href="http://wes.is/2015/01/13/how-to-use-yeoman-to-scaffold-your-next-web-app/">
+    
+    <meta property="og:site_name" content="Wesley Tate Smith">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Use Yeoman to Scaffold Your Next Web App">
+    <meta property="og:description" content=" So you've decided to build your next groundbreaking web app, but you don't know where to start.   You need to remember to install your client-side dependencies (bower), server side dependencies (npm / node), testing suites, css frameworks / preprocessors, html templating engines...">
+    <meta property="og:url" content="http://wes.is/2015/01/13/how-to-use-yeoman-to-scaffold-your-next-web-app/">
+    <meta property="article:published_time" content="2015-01-13T09:49:46.904Z">
+    <meta property="article:modified_time" content="2015-03-18T22:15:22.831Z">
+    <meta property="article:tag" content="javascript">
+    <meta property="article:tag" content="npm">
+    <meta property="article:tag" content="node">
+    <meta property="article:tag" content="yeoman">
+    <meta property="article:tag" content="bower">
+    <meta property="article:tag" content="gulp">
+    <meta property="article:tag" content="angular">
+    <meta property="article:tag" content="bootstrap">
+    <meta property="article:tag" content="stylus">
+    <meta property="article:tag" content="jade">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How to Use Yeoman to Scaffold Your Next Web App">
+    <meta name="twitter:description" content=" So you've decided to build your next groundbreaking web app, but you don't know where to start.   You need to remember to install your client-side dependencies (bower), server side dependencies (npm / node), testing suites, css frameworks / preprocessors, html templating engines...">
+    <meta name="twitter:url" content="http://wes.is/2015/01/13/how-to-use-yeoman-to-scaffold-your-next-web-app/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Wesley Tate Smith",
+    "author": {
+        "@type": "Person",
+        "name": "Wesley Tate Smith",
+        "image": "http://wes.is/content/images/2014/12/AvbldJJ8.jpeg",
+        "url": "http://wes.is/author/wesley",
+        "sameAs": "http://twitter.com/wesleytate"
+    },
+    "headline": "How to Use Yeoman to Scaffold Your Next Web App",
+    "url": "http://wes.is/2015/01/13/how-to-use-yeoman-to-scaffold-your-next-web-app/",
+    "datePublished": "2015-01-13T09:49:46.904Z",
+    "dateModified": "2015-03-18T22:15:22.831Z",
+    "keywords": "javascript, npm, node, yeoman, bower, gulp, angular, bootstrap, stylus, jade",
+    "description": " So you&#x27;ve decided to build your next groundbreaking web app, but you don&#x27;t know where to start.   You need to remember to install your client-side dependencies (bower), server side dependencies (npm / node), testing suites, css frameworks / preprocessors, html templating engines..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Wesley Tate Smith" href="http://wes.is/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59397419-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template tag-javascript tag-npm tag-node tag-yeoman tag-bower tag-gulp tag-angular tag-bootstrap tag-stylus tag-jade">
+
+    
+    
+
+
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="http://wes.is">Home</a>
+        <a class="subscribe-button icon-feed" href="http://wes.is/rss/">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-javascript tag-npm tag-node tag-yeoman tag-bower tag-gulp tag-angular tag-bootstrap tag-stylus tag-jade featured">
+
+        <header class="post-header">
+            <h1 class="post-title">How to Use Yeoman to Scaffold Your Next Web App</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-01-13">13 January 2015</time>  on <a href="../../../../tag/javascript/">javascript</a>, <a href="../../../../tag/npm/">npm</a>, <a href="../../../../tag/node/">node</a>, <a href="../../../../tag/yeoman/">yeoman</a>, <a href="../../../../tag/bower/">bower</a>, <a href="../../../../tag/gulp/">gulp</a>, <a href="../../../../tag/angular/">angular</a>, <a href="../../../../tag/bootstrap/">bootstrap</a>, <a href="../../../../tag/stylus/">stylus</a>, <a href="../../../../tag/jade/">jade</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><img src="../../../../content/images/2015/01/yeoman-logo.png" alt="Yeoman"></p>
+
+<p>So you've decided to build your next groundbreaking web app, but you don't know where to start.  </p>
+
+<p>You need to remember to install your client-side dependencies (bower), server side dependencies (npm / node), testing suites, css frameworks / preprocessors, html templating engines, js frameworks, build tools, linters, minification, etc... etc... AND on top of that you need to make sure to construct the application's file structure correctly and ensure that everything is communicating as expected.</p>
+
+<p>Sounds like hours of unneccessary work / potential productivity time to me...</p>
+
+<h2 id="yeomantotherescue">Yeoman to the Rescue!</h2>
+
+<p>Have you ever had the experience of going to the grocery store only to find out that all of your items on your grocery list are already in your cart and all you need to do is checkout? No? Neither have I.  </p>
+
+<p>But this is essentially what Yeoman provides for you. A space where you get to choose all the tools you want in your optimal dev environment. All you need to do is select which parts you want in your machine before initializing, and Yeoman builds out the application file structure for you, souped-up and ready to go. Yeoman provides 'generators' which can be called with the 'yo' command to scaffold your app.</p>
+
+<h4 id="howdoistart">How do I start?</h4>
+
+<p>If you don't already have node/npm, you'll need to get those first.  Open up your terminal and type in the following command to check. </p>
+
+<pre><code class="language-javascript">node -v &amp;&amp; npm -v  
+</code></pre>
+
+<p>If you don't have node, go check out <a href="http://nodejs.org">Node's site</a> to get up and running. Installing Node will also give you <a href="https://www.npmjs.com/">npm</a>.  </p>
+
+<p>Once you have node / npm, you'll want to globally install some command line tools to get up and running if you don't already have them.  Specifically, you're going to need <strong>Yeoman</strong>, <strong>Bower</strong> and either <strong>Grunt</strong> or <strong>Gulp</strong> as a build tool.  I recommend installing both and trying either out to see which works for you.  The following command will do this for you. Note that if you are getting errors, you may need to prepend the entire command with "sudo" to allow root access.</p>
+
+<pre><code class="language-javascript">npm install -g yo bower grunt-cli gulp  
+</code></pre>
+
+<p>You are now ready to rock.</p>
+
+<h3 id="usinggenerators">Using Generators</h3>
+
+<p><img src="../../../../content/images/2015/01/kickstarting-nodejs-projects-with-yeoman-5-638.jpg" alt="Generators">
+Let me preface by saying that there are <a href="http://yeoman.io/generators/">so many Yeoman generators out there</a> that you can essentially create any combination of tools that you could ever want.  In the following example I will show you how to set up the structure for an Angular app with jQuery, Bootstrap (with Stylus as the CSS preprocessor), Jade as an HTML templating engine, Jasmine / Mocha for testing, Gulp as the build system, and a few other tools to get you up and running ASAP.  </p>
+
+<p>First, let's install the Yeoman generator that you'll be using to get you up and running with Angular / Gulp. </p>
+
+<pre><code class="language-javascript">npm install -g generator-gulp-angular  
+</code></pre>
+
+<p>Next create a directory for your project and cd into that directory.  </p>
+
+<pre><code class="language-javascript">mkdir myapp &amp;&amp; cd myapp  
+</code></pre>
+
+<p>Type 'yo'. This will prompt Yeoman to ask you what you want to do.</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-28-37-AM-1.png" alt="Gulp Angular Generator"></p>
+
+<p>You may have less options (or more) than shown in the picture above.  These are the different Yeoman generators.  For this demo, we are going to select Gulp Angular and my preferred selections will be highlighted in green. Hit enter.</p>
+
+<p>Next, select which version of Angular you want.</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-32-42-AM.png" alt="Angular version"></p>
+
+<p>Select your Angular modules.</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-33-00-AM.png" alt="Angular Modules"></p>
+
+<p>Select the version of jQuery you want for your project.  </p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-33-34-AM.png" alt="jQuery 2.x"></p>
+
+<p>Choose a REST resource library. </p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-36-53-AM.png" alt="ngResource"></p>
+
+<p>Choose a router.</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-39-04-AM.png" alt="ngRoute"></p>
+
+<p>Select your favorite UI framework!</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-39-53-AM.png" alt="Bootstrap"></p>
+
+<p>Select how you want your UI framework components.</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-40-50-AM.png" alt="Angular UI Bootstrap"></p>
+
+<p>Choose your preferred CSS preprocessor!  My favorite is Stylus :)</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-41-52-AM.png" alt="Stylus"></p>
+
+<p>Select your JavaScript preprocessor if any (I will opt for JS in it's purest form, though I am a big CoffeeScript fan as well!)</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-42-56-AM.png" alt="JavaScript"></p>
+
+<p>Pick an html templating engine! I'm hopping on the Jade train.</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-44-20-AM.png" alt="Jade"></p>
+
+<p>AND YOU'RE GOOD TO GO. Let the Yeoman gods take care of the rest. <br>
+From here, Yeoman will call bower install and npm install to install all of your dependencies and build out your app.  If you encounter any access errors, you may need to npm install your dependencies yourself with "sudo npm install".  </p>
+
+<p>Now comes the really fun part.  Once your dependencies have finished installing, from the home directory of your app, type the following to fire up gulp and serve your app:</p>
+
+<pre><code class="language-javascript">gulp serve  
+</code></pre>
+
+<p>Your terminal should look something this. On entering the command above, gulp begins to watch all of your files and serves your app up on localhost at port 3000 (or another near if 3000 is taken).</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-12-52-32-AM-1.png" alt="Gulp Terminal"></p>
+
+<p>You should automatically be directed to your default browser to localhost:port where a dummy front page of your app should be waiting patiently, including links to all of your installed dependencies / tools!</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-1-05-41-AM-1.png" alt="myapp"></p>
+
+<p>Now head over to your favorite text editor and open up all of your directories' files. </p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-1-08-08-AM.png" alt="files"></p>
+
+<p>Check out that file structure!!!</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-1-10-09-AM-1.png" alt="files"></p>
+
+<h6 id="gulpftw">Gulp FTW</h6>
+
+<p>And since we can just call 'gulp serve' for gulp to watch for changes in our files in real time, we can update our app, save the files, and see the changes rendered in the browser instantly, all without needing to refresh the page.  </p>
+
+<p>Eg. changing our stylus from this: <br>
+<img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-1-19-55-AM.png" alt="Before"></p>
+
+<p>...to this...
+<img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-1-20-13-AM.png" alt="After"></p>
+
+<p>...on file save will instantly render our app without refresh in our browser:</p>
+
+<p><img src="../../../../content/images/2015/01/Screen-Shot-2015-01-13-at-1-22-23-AM.png" alt="Rendered"></p>
+
+<p>Talk about smooth moves. </p>
+
+<h3 id="youdamanyeoman">You 'da man, Yeoman</h3>
+
+<p>If you want to get up and running with projects faster, I highly recommend adding Yeoman into your development workflow.  You'll save time and plenty of headaches, and a build tool like Gulp or Grunt will keep you in the flow when making changes to your dependencies or files.  If you encounter any issues setting up Yeoman feel free to reach out to me below!</p>
+        </section>
+
+        <footer class="post-footer">
+
+        
+        
+
+            
+            <figure class="author-image">
+                <a class="img" href="../../../../author/wesley/" style="background-image: url(../../../../content/images/2014/12/AvbldJJ8.jpeg)"><span class="hidden">Wesley Tate Smith's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="../../../../author/wesley/">Wesley Tate Smith</a></h4>
+
+                
+                    <p>Programmer, musician, world adventurer, amateur astronomer, and proponent of deep metaphysical discussions.  Currently @Symphony - https://symphony.com</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location">San Francisco</span>
+                    <span class="author-link icon-link"><a href="http://twitter.com/wesleytate">http://twitter.com/wesleytate</a></span>
+                </div>
+            </section>
+
+        
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=How%20to%20Use%20Yeoman%20to%20Scaffold%20Your%20Next%20Web%20App&amp;url=http://wes.is/2015/01/13/how-to-use-yeoman-to-scaffold-your-next-web-app/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://wes.is/2015/01/13/how-to-use-yeoman-to-scaffold-your-next-web-app/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://wes.is/2015/01/13/how-to-use-yeoman-to-scaffold-your-next-web-app/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+	        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wesleysmyth'; // required: replace example with your forum shortname
+    var disqus_identifier = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+         <section class="copyright"><a href="http://wes.is">Wesley Tate Smith</a> © 2018</section>
+         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+
+    
+    <script src="../../../../public/jquery.js?v=4800c3a425"></script>
+
+    
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=4800c3a425"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=4800c3a425"></script>
+    <script type="text/javascript" src="../../../../assets/js/prism.js?v=4800c3a425"></script>
+
+</body>
